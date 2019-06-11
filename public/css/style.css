@@ -1,0 +1,41 @@
+body {
+  background: rgb(46, 44, 44);
+  color: #fff;
+}
+
+p {
+  color: red;
+}
+
+.horizontal-radios {
+  text-align: center;
+}
+
+.container {
+  width: 300px;
+  margin: auto;
+}
+
+#checks-all {
+  width: 50px;
+  float: left;
+  height: 500px;
+}
+
+#LPD {
+  width: 100px;
+  float: left;
+  height: 300px;
+}
+
+#GPD {
+  width: 100px;
+  float: left;
+  height: 300px;
+}
+
+#LPD2 {
+  width: 100px;
+  float: left;
+  height: 300px;
+}

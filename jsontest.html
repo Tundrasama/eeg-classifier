@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EEG Classifier</title>
+  </head>
+  <body>
+    <script>
+      var person = {
+        name: 'Brad',
+        age: 35,
+        address: {
+          street: '5 main str',
+          city: 'Boston'
+        },
+        children: ['Brianna', 'Nicholas'],
+        channels: {
+          channel_1: {
+            item_1: {
+              index: 'item_1',
+              name: 'FP1-F7',
+              selected: false
+            },
+            item_2: {
+              index: 'item_2',
+              name: 'F7-T3',
+              selected: false
+            },
+            item_3: {
+              index: 'item_3',
+              name: 'T3-T5',
+              selected: false
+            },
+            item_4: {
+              index: 'item_4',
+              name: 'T5-O1',
+              selected: false
+            }
+          }
+        }
+      };
+
+      //   person = JSON.stringify(person);
+      //   person = JSON.parse(person);
+
+      console.log(person.children[1]);
+      console.log(person.channels.channel_1.item_4.name);
+    </script>
+  </body>
+</html>
