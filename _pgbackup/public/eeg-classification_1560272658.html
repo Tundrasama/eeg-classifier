@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>EEG Classifier</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script language="JavaScript">
+
+    <!-- <script language="JavaScript">
       //   $('#selectall').click(function() {
       //     console.log('test');
       //     $(this.form.elements)
@@ -21,43 +21,45 @@
           checkbox.checked = source.checked;
         }
       }
-    </script>
-    <!-- <style>
+    </script> -->
+    <style>
       body {
         background: rgb(46, 44, 44);
         color: #fff;
       }
+
       /* p {
-            color: red;
-            } */
+        color: red;
+      } */
+
       .horizontal-radios {
         text-align: center;
       }
+
       #checks-all {
         width: 50px;
         float: left;
         height: 500px;
       }
+
       #checks-channel {
         width: 50px;
         float: left;
         height: 75px;
       }
-      .checks-individual {
-        widows: 75px;
-        float: left;
-        height: 75px;
-      }
+
       #eeg-image {
         width: 600px;
         float: left;
         height: 400px;
       }
+
       .container {
         width: 1075px;
         margin: auto;
         text-align: center;
       }
+
       #classification-headers {
         width: 1075px;
         height: 25px;
@@ -66,6 +68,7 @@
         column-count: 3;
         column-gap: 40px;
       }
+
       #radio-container {
         width: 1075px;
         height: 25px;
@@ -74,9 +77,11 @@
         column-count: 3;
         column-gap: 40px;
       }
+
       #header {
         background-color: blue;
       }
+
       #LPD {
         width: 350px;
         float: left;
@@ -86,15 +91,18 @@
         column-rule: 1px solid lightblue;
         border-style: groove;
       }
+
       h2 {
         column-span: all;
       }
+
       #GPD {
         width: 350px;
         float: left;
         height: 200px;
         border-style: groove;
       }
+
       #LPD2 {
         width: 350px;
         float: left;
@@ -104,7 +112,7 @@
         column-rule: 1px solid lightblue;
         border-style: groove;
       }
-    </style> -->
+    </style>
   </head>
   <body>
     <form action="/eeg-classification" method="POST">
@@ -119,94 +127,137 @@
       </div>
       <div id="channels">
         <p>Channels</p>
-        <div id="eeg-picture">
-          <img
-            src="media/eeg-picture.JPG"
-            alt="eeg-picture"
-            style="width:500px;height:600px;float:right"
-          />
-        </div>
         <div id="checks-all">
           <input
             type="checkbox"
             name="select_all"
             class="selectall"
-            onclick="toggle(this)"
-          />
-          <br />
+            onClick="toggle(this)"
+          /><br />
         </div>
         <div id="checks-channel">
-          <input type="checkbox" name="channel_1_select_all" />
-          <br />
+          <input type="checkbox" name="channel_1_select_all" /><br />
         </div>
-        <div id="checklist1">
-          <input type="checkbox" name="ch1_item_1" value="ch1_item_1" />Fp1-F7
-          <br />
-          <input type="checkbox" name="ch1_item_2" value="ch1_item_2" />F7-T3
-          <br />
-          <input type="checkbox" name="ch1_item_3" value="ch1_item_3" />T3-T5
-          <br />
-          <input type="checkbox" name="ch1_item_4" value="ch1_item_4" />T5-O1
-          <br />
-          <br />
+        <div id="">
+          <input
+            type="checkbox"
+            name="ch1_item_1"
+            value="ch1_item_1"
+          />Fp1-F7<br />
+          <input
+            type="checkbox"
+            name="ch1_item_2"
+            value="ch1_item_2"
+          />F7-T3<br />
+          <input
+            type="checkbox"
+            name="ch1_item_3"
+            value="ch1_item_3"
+          />T3-T5<br />
+          <input
+            type="checkbox"
+            name="ch1_item_4"
+            value="ch1_item_4"
+          />T5-O1<br /><br />
         </div>
         <div id="checks-channel">
-          <input type="checkbox" name="channel_2_select_all" />
-          <br />
+          <input type="checkbox" name="channel_2_select_all" /><br />
         </div>
         <div id="checklist2">
-          <input type="checkbox" name="ch2_item_1" value="ch2_item_1" />Fp2-F8
-          <br />
-          <input type="checkbox" name="ch2_item_2" value="ch2_item_2" />F8-T4
-          <br />
-          <input type="checkbox" name="ch2_item_3" value="ch2_item_3" />T4-T6
-          <br />
-          <input type="checkbox" name="ch2_item_4" value="ch2_item_4" />T6-O2
-          <br />
-          <br />
+          <input
+            type="checkbox"
+            name="ch2_item_1"
+            value="ch2_item_1"
+          />Fp2-F8<br />
+          <input
+            type="checkbox"
+            name="ch2_item_2"
+            value="ch2_item_2"
+          />F8-T4<br />
+          <input
+            type="checkbox"
+            name="ch2_item_3"
+            value="ch2_item_3"
+          />T4-T6<br />
+          <input
+            type="checkbox"
+            name="ch2_item_4"
+            value="ch2_item_4"
+          />T6-O2<br /><br />
         </div>
         <div id="checks-channel">
-          <input type="checkbox" name="channel_3_select_all" />
-          <br />
+          <input type="checkbox" name="channel_3_select_all" /><br />
         </div>
         <div id="checklist3">
-          <input type="checkbox" name="ch3_item_1" value="ch3_item_1" />Fp1-F3
-          <br />
-          <input type="checkbox" name="ch3_item_2" value="ch3_item_2" />F3-C3
-          <br />
-          <input type="checkbox" name="ch3_item_3" value="ch3_item_3" />C3-P3
-          <br />
-          <input type="checkbox" name="ch3_item_4" value="ch3_item_4" />P3-O1
-          <br />
-          <br />
+          <input
+            type="checkbox"
+            name="ch3_item_1"
+            value="ch3_item_1"
+          />Fp1-F3<br />
+          <input
+            type="checkbox"
+            name="ch3_item_2"
+            value="ch3_item_2"
+          />F3-C3<br />
+          <input
+            type="checkbox"
+            name="ch3_item_3"
+            value="ch3_item_3"
+          />C3-P3<br />
+          <input
+            type="checkbox"
+            name="ch3_item_4"
+            value="ch3_item_4"
+          />P3-O1<br /><br />
         </div>
         <div id="checks-channel">
-          <input type="checkbox" name="channel_4_select_all" />
-          <br />
+          <input type="checkbox" name="channel_4_select_all" /><br />
         </div>
         <div id="checklist4">
-          <input type="checkbox" name="ch4_item_1" value="ch4_item_1" />Fp2-F4
-          <br />
-          <input type="checkbox" name="ch4_item_2" value="ch4_item_2" />F4-C4
-          <br />
-          <input type="checkbox" name="ch4_item_3" value="ch4_item_3" />C4-P4
-          <br />
-          <input type="checkbox" name="ch4_item_4" value="ch4_item_4" />P4-O2
-          <br />
-          <br />
+          <input
+            type="checkbox"
+            name="ch4_item_1"
+            value="ch4_item_1"
+          />Fp2-F4<br />
+          <input
+            type="checkbox"
+            name="ch4_item_2"
+            value="ch4_item_2"
+          />F4-C4<br />
+          <input
+            type="checkbox"
+            name="ch4_item_3"
+            value="ch4_item_3"
+          />C4-P4<br />
+          <input
+            type="checkbox"
+            name="ch4_item_4"
+            value="ch4_item_4"
+          />P4-O2<br /><br />
         </div>
         <div id="checks-channel">
-          <input type="checkbox" name="channel_5_select_all" />
-          <br />
+          <input type="checkbox" name="channel_5_select_all" /><br />
         </div>
         <div id="checklist5">
-          <input type="checkbox" name="ch5_item_1" value="ch5_item_1" />Fz-Cz
-          <br />
-          <input type="checkbox" name="ch5_item_2" value="ch5_item_2" />Cz-Pz
-          <br />
-          <br />
+          <input
+            type="checkbox"
+            name="ch5_item_1"
+            value="ch5_item_1"
+          />Fz-Cz<br />
+          <input
+            type="checkbox"
+            name="ch5_item_2"
+            value="ch5_item_2"
+          />Cz-Pz<br /><br />
         </div>
       </div>
+
+      <img
+        src="../media/eeg-picture.JPG"
+        alt="eeg-picture"
+        style="width:500px;height:600px;"
+      />
+
       <div id="frequencies" class="horizontal-radios">
         <p style="text-align: center">Frequency (Hz)</p>
         <input type="radio" name="frequency" value="freq_1" />
@@ -228,6 +279,7 @@
         <input type="radio" name="frequency" value="freq_9" />
         <label>&ge;4.0</label>
       </div>
+
       <br />
       <p style="text-align: center">Classifications</p>
       <br />
@@ -245,7 +297,6 @@
       <div id="classifications" class="multi-column">
         <div class="container">
           <div id="LPD">
-            <br />
             <label>Type</label>
             <br />
             <br />
@@ -254,6 +305,7 @@
             <br />
             <input type="radio" name="lpd_type" value="lpd_type_2" />
             <label>B/I asym</label>
+            <br />
             <br />
             <br />
             <br />
@@ -275,9 +327,8 @@
             <input type="checkbox" name="LPD-PRE-L" value="O" />
             <label>O</label>
           </div>
-          <div id="GPD">
-            <br />
 
+          <div id="GPD">
             <label>Predominance</label>
             <br />
             <br />
@@ -291,9 +342,8 @@
             <input type="checkbox" name="LPD-PRE-L" value="Generalized" />
             <label>Generalized</label>
           </div>
-          <div id="LPD2">
-            <br />
 
+          <div id="LPD2">
             <label>Type</label>
             <br />
             <br />
@@ -302,6 +352,8 @@
             <br />
             <input type="radio" name="lpd_type" value="lpd_type_2" />
             <label>B/I asym</label>
+            <br />
+            <br />
             <br />
             <br />
             <label>Predominance</label>
@@ -324,6 +376,7 @@
           </div>
         </div>
       </div>
+
       <br />
       <br />
       <br />

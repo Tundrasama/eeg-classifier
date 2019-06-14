@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>EEG Classifier</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
       //   $('#selectall').click(function() {
       //     console.log('test');
       //     $(this.form.elements)
@@ -21,8 +20,8 @@
           checkbox.checked = source.checked;
         }
       }
-    </script>
-    <!-- <style>
+    </script> -->
+    <style>
       body {
         background: rgb(46, 44, 44);
         color: #fff;
@@ -104,7 +103,7 @@
         column-rule: 1px solid lightblue;
         border-style: groove;
       }
-    </style> -->
+    </style>
   </head>
   <body>
     <form action="/eeg-classification" method="POST">
@@ -121,7 +120,7 @@
         <p>Channels</p>
         <div id="eeg-picture">
           <img
-            src="media/eeg-picture.JPG"
+            src="https://www.epilepsy.com/sites/core/files/upload/image/infect_2_s.gif"
             alt="eeg-picture"
             style="width:500px;height:600px;float:right"
           />
@@ -277,7 +276,6 @@
           </div>
           <div id="GPD">
             <br />
-
             <label>Predominance</label>
             <br />
             <br />
@@ -293,7 +291,6 @@
           </div>
           <div id="LPD2">
             <br />
-
             <label>Type</label>
             <br />
             <br />
@@ -302,6 +299,7 @@
             <br />
             <input type="radio" name="lpd_type" value="lpd_type_2" />
             <label>B/I asym</label>
+            <br />
             <br />
             <br />
             <label>Predominance</label>
