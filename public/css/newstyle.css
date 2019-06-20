@@ -1,108 +1,122 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 0.2fr 2.6fr 1fr 0.2fr 1.8fr;
-  grid-template-areas: 'Header' 'Montage' 'NOT-LPD-GPD-PASS' 'Select-All' 'Select-Some' 'Select-Individual' 'eeg-picture' 'Frequencies' 'LPD' 'GPD' 'LPD2' 'Type' 'Predominance' 'Type' 'Predominance';
-  text-align: center;
-}
-
 body {
   background: rgb(46, 44, 44);
   color: #fff;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 0.4fr 2.6fr 0.5fr 0.2fr 0.5fr;
+  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2';
+}
 
 .Header {
   grid-area: Header;
+  text-align: center;
 }
 
 .Montage {
   grid-area: Montage;
+  text-align: center;
 }
 
-.NOT-LPD-GPD-PASS {
-  grid-area: NOT-LPD\/GPD\\|\|\PASS;
+.Pass {
+  grid-area: Pass;
+  text-align: center;
 }
 
 .Select-All {
-  float: left;
   grid-area: Select-All;
+  text-align: center;
 }
 
-.Select-Some {
-  float: left;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: 'Channel-1' 'Channel-2' 'Channel-3' 'Channel-4' 'Channel-5';
-  grid-area: Select-Some;
+.Select-Channel {
+  grid-area: Select-Channel;
+  text-align: center;
 }
 
-.Select-Individual {
-  float: left;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: '. .' '. .' '. .' '. .' '. .';
-  grid-area: Select-Individual;
+.input-check-channel input {
+  margin-bottom: 100px;
 }
 
-.Channel-1 {
-  grid-area: Channel-1;
+.Select-Ind {
+  grid-area: Select-Ind;
 }
 
-.Channel-2 {
-  grid-area: Channel-2;
+.input-check-ind {
+  margin-bottom: 6px;
+  margin-left: 25px;
 }
 
-.Channel-3 {
-  grid-area: Channel-3;
+.Select-Ind input {
+  grid-area: Select-Ind;
+  margin-bottom: 7px;
 }
 
-.Channel-4 {
-  grid-area: Channel-4;
-}
-
-.Channel-5 {
-  grid-area: Channel-5;
-}
-
-.eeg-picture {
-  float: left;
-  grid-area: eeg-picture;
+.Images {
+  grid-area: Images;
+  text-align: center;
 }
 
 .Frequencies {
   grid-area: Frequencies;
+  text-align: center;
+}
+
+.Classifications-Header {
+  grid-area: Classifications-Header;
+  text-align: center;
 }
 
 .LPD {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'Type1 Predominance1 Predominance1';
   grid-area: LPD;
+  border-style: groove;
+  border-color: black;
+}
+
+/* .LPD input {
+  margin-right: 0px;
+} */
+
+.Type1 {
+  grid-area: Type1;
+}
+
+.Predominance1 {
+  grid-area: Predominance1;
 }
 
 .GPD {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'Predominance2 Predominance2 Predominance2';
   grid-area: GPD;
+  border-style: groove;
+  border-color: black;
 }
 
-.LPD2 {
-  grid-area: LPD2;
+.Predominance2 {
+  grid-area: Predominance2;
 }
 
-.Type {
-  grid-area: Type;
+.LPD-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'Type3 Predominance3 Predominance3';
+  grid-area: LPD-2;
+  border-style: groove;
+  border-color: black;
 }
 
-.Predominance {
-  grid-area: Predominance;
+.Type3 {
+  grid-area: Type3;
 }
 
-.Predominance {
-  grid-area: Predominance;
-}
-
-.Type {
-  grid-area: Type;
-}
-
-.Predominance {
-  grid-area: Predominance;
+.Predominance3 {
+  grid-area: Predominance3;
 }

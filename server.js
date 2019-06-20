@@ -22,7 +22,7 @@ app.listen(3000, () => {
 });
 
 // route = '/test.html';
-route = '/public/new-eeg-classification.html';
+route = '/public/eeg-classification.html';
 // route = '/jsontest.html';
 
 // app.use('/api/channel/', require('./routes/classification'));
