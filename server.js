@@ -18,10 +18,13 @@ app.use(express.json({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
+// console.log(process.env);
 const config = require('config');
 
-app.listen(3000, () => {
-  console.log('listening on 3000');
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log('listening on ' + port);
 });
 
 // route = '/test.html';
