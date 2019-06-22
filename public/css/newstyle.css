@@ -1,12 +1,12 @@
 body {
-  background: rgb(46, 44, 44);
+  background: rgb(121, 170, 211);
   color: #fff;
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.4fr 0.4fr 2.6fr 0.5fr 0.2fr 0.5fr;
-  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header Classifications-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2';
+  grid-template-columns: 0.75fr 0.75fr 0.75fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 0.4fr 2.6fr 0.5fr 0.1fr 0.5fr;
+  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2';
 }
 
 .Header {
@@ -55,6 +55,8 @@ body {
 .Images {
   grid-area: Images;
   text-align: center;
+  border-style: groove;
+  border-color: black;
 }
 
 .Frequencies {
@@ -62,61 +64,93 @@ body {
   text-align: center;
 }
 
-.Classifications-Header {
-  grid-area: Classifications-Header;
-  text-align: center;
-}
-
 .LPD {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'Type1 Predominance1 Predominance1';
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'LPD-Type LPD-Predom-ln1 LPD-Predom-ln1' 'LPD-Type LPD-Predom-ln2 LPD-Predom-ln2';
   grid-area: LPD;
   border-style: groove;
-  border-color: black;
+  border-color: rgb(210, 209, 223);
 }
 
-/* .LPD input {
-  margin-right: 0px;
-} */
-
-.Type1 {
-  grid-area: Type1;
+.LPD-Type {
+  grid-area: LPD-Type;
+  text-align: center;
+  border-style: groove;
+  border-color: rgb(210, 209, 223);
 }
 
-.Predominance1 {
-  grid-area: Predominance1;
+.LPD-Predom-ln1 {
+  grid-area: LPD-Predom-ln1;
+  text-align: center;
+  margin-left: 45.5px;
+}
+
+.LPD-Predom-ln2 {
+  grid-area: LPD-Predom-ln2;
+  text-align: center;
 }
 
 .GPD {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'Predominance2 Predominance2 Predominance2';
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'GPD-Predom-ln1 GPD-Predom-ln1 GPD-Predom-ln1' 'GPD-Predom-ln2 GPD-Predom-ln2 GPD-Predom-ln2';
   grid-area: GPD;
   border-style: groove;
-  border-color: black;
+  border-color: rgb(210, 209, 223);
 }
 
-.Predominance2 {
-  grid-area: Predominance2;
+.GPD-Predom-ln1 {
+  grid-area: GPD-Predom-ln1;
+  text-align: center;
 }
 
-.LPD-2 {
+.GPD-Predom-ln2 {
+  grid-area: GPD-Predom-ln2;
+  text-align: center;
+}
+
+.LPD2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'Type3 Predominance3 Predominance3';
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'LPD-2-Type LPD-2-Predom-ln1 LPD-2-Predom-ln1' 'LPD-2-Type LPD-2-Predom-ln2 LPD-2-Predom-ln2';
   grid-area: LPD-2;
   border-style: groove;
-  border-color: black;
+  border-color: rgb(210, 209, 223);
 }
 
-.Type3 {
-  grid-area: Type3;
+.LPD-2-Type {
+  grid-area: LPD-2-Type;
+  text-align: center;
+  border-style: groove;
+  border-color: rgb(210, 209, 223);
 }
 
-.Predominance3 {
-  grid-area: Predominance3;
+.LPD-2-Predom-ln1 {
+  grid-area: LPD-2-Predom-ln1;
+  text-align: center;
+  margin-left: 45.5px;
+}
+
+.LPD-2-Predom-ln2 {
+  grid-area: LPD-2-Predom-ln2;
+  text-align: center;
+}
+
+.LPD-Header {
+  grid-area: LPD-Header;
+  text-align: center;
+}
+
+.GPD-Header {
+  grid-area: GPD-Header;
+  text-align: center;
+}
+
+.LPD2-Header {
+  grid-area: LPD2-Header;
+  text-align: center;
 }
