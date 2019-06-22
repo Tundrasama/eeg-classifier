@@ -17,7 +17,7 @@ app.use(express.json({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
+process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
 const config = require('config');
 
 app.listen(3000, () => {
