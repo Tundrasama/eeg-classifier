@@ -5,7 +5,9 @@ const connectDB = require('./config/db');
 const classification = require('./models/Classification');
 const path = require('path');
 
-var db;
+const CONCURRENCY = process.env.WEB_CONCURRENCY || 1;
+
+// var db;
 
 // connect to database
 connectDB();
