@@ -4,11 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "development": "nodemon server.js",
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "engines": {
-    "node": "12.2.0"
+    "node": "12.2.0",
+    "npm": "6.9.0"
   },
   "author": "Jeremy McGraw",
   "license": "ISC",
