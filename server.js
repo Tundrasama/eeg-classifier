@@ -19,10 +19,10 @@ app.use(express.json({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
-// console.log(process.env);
-const config = require('config');
-process.env['NODE_ENV'] = 'development';
+// process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
+// // console.log(process.env);
+// const config = require('config');
+// process.env['NODE_ENV'] = 'development';
 
 const port = process.env.PORT || 3000;
 
