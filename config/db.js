@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI');
+
+console.log(process.env.NODE_ENV, process.env.MONGO_URI);
+
+if (process.env.NODE_ENV == 'production') {
+  db = process.env.MONGO_URI;
+} else {
+  const db = config.get('mongoURI');
+}
 
 console.log('mongoURI: ' + db);
 
@@ -15,6 +22,7 @@ const connectDB = async () => {
   } catch (err) {
     console.error('db.js: ' + err.message);
     //Exit process with failure
+
     //process.exit(1);
   }
 };
