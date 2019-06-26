@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/newstyle.css" />
   </head>
   <body>
-    <form action="/eeg-classification" method="POST">
+    <form action="/eeg-classification" method="POST" id="classForm">
       <div class="grid-container">
         <div class="Header">
           <p>Image X of 1500</p>
@@ -67,15 +67,15 @@
             <input
               type="checkbox"
               class="channel1"
-              name="ch1_item_1"
-              value="ch1_item_1"
+              name="channel_1"
+              value='true'
             />Fp1-F7
             <br />
             <input
               type="checkbox"
               class="channel1"
-              name="ch1_item_2"
-              value="ch1_item_2"
+              name="channel_2"
+              value='true'
             />F7-T3
             <br />
             <input
@@ -446,11 +446,13 @@
             >
           </div>
         </div>
+        <div class="Submit">
+          <input type="submit" value="submit" id="submit">
+        </div>
       </div>
     </form>
     <script>
 // JAVASCRIPT
-
 /// Need a function to return all controls to a default status
       $('#select_all').click(function() {
         $('.input-check-channel input').prop('checked',this.checked);
