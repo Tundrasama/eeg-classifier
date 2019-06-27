@@ -219,23 +219,23 @@
         </div>
         <div class="Frequencies">
           <p>Frequency (Hz)</p>
-          <input type="radio" name="frequency" value="freq_1" />
+          <input type="radio" name="frequency" value="&lt;0.5" />
           <label>&lt;0.5</label>
-          <input type="radio" name="frequency" value="freq_2" />
+          <input type="radio" name="frequency" value="0.5" />
           <label>0.5</label>
-          <input type="radio" name="frequency" value="freq_3" />
+          <input type="radio" name="frequency" value="1.0" />
           <label>1.0</label>
-          <input type="radio" name="frequency" value="freq_4" />
+          <input type="radio" name="frequency" value="1.5" />
           <label>1.5</label>
-          <input type="radio" name="frequency" value="freq_5" />
+          <input type="radio" name="frequency" value="2.0" />
           <label>2.0</label>
-          <input type="radio" name="frequency" value="freq_6" />
+          <input type="radio" name="frequency" value="2.5" />
           <label>2.5</label>
-          <input type="radio" name="frequency" value="freq_7" />
+          <input type="radio" name="frequency" value="3.0" />
           <label>3.0</label>
-          <input type="radio" name="frequency" value="freq_8" />
+          <input type="radio" name="frequency" value="3.5" />
           <label>3.5</label>
-          <input type="radio" name="frequency" value="freq_9" />
+          <input type="radio" name="frequency" value="&ge;4.0" />
           <label>&ge;4.0</label>
         </div>
 
@@ -243,7 +243,7 @@
           <input
           type="checkbox"
           class="LPD-CLASSIFICATION"
-          name="LPD-CLASSIFICATION"
+          name="classChoice"
           value="LPD"
           id="LPD-CHECK"
         /></div>
@@ -251,7 +251,7 @@
           <input
           type="checkbox"
           class="GPD-CLASSIFICATION"
-          name="GPD-CLASSIFICATION"
+          name="classChoice"
           value="GPD"
           id="GPD-CHECK"
         /></div>
@@ -259,7 +259,7 @@
           <input
           type="checkbox"
           class="LPD2-CLASSIFICATION"
-          name="LPD2-CLASSIFICATION"
+          name="classChoice"
           value="LPD2"
           id="LPD2-CHECK"
         /></div>
@@ -268,12 +268,12 @@
           <div class="LPD-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="lpd_type" value="lpd_type_1" />
+              <input type="radio" name="class_type" value="U/I" />
               U/I</label
             >
             <label>
-              <input type="radio" name="lpd_type" value="lpd_type_2" />
-              B/I asym</label
+              <input type="radio" name="class_type" value="B/I Asym" />
+              B/I Asym</label
             >
           </div>
           <div class="LPD-Predom-ln1">
@@ -282,7 +282,7 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-L"
+                name="predom"
                 value="L"
               />
               L</label
@@ -291,7 +291,7 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-F"
+                name="predom"
                 value="F"
               />
               F</label
@@ -300,15 +300,16 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-P"
+                name="predom"
                 value="P"
               />
               P</label
             >
             <label>
+              <!-- should probably exclude from POST -->
               <input
                 type="checkbox"
-                name="LPD-PRE-All"
+                
                 id="LPD-Predom-Sel-All"
                 value="All"
               />
@@ -321,7 +322,7 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-R"
+                name="predom"
                 value="R"
               />
               R</label
@@ -330,7 +331,7 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-T"
+                name="predom"
                 value="T"
               />
               T</label
@@ -339,7 +340,7 @@
               <input
                 type="checkbox"
                 class="LPD-PREDOM"
-                name="LPD-PRE-O"
+                name="predom"
                 value="O"
               />
               O</label
@@ -351,19 +352,19 @@
               <label><p></p><u>Predominance</u> </p></label>
           </div>
           <div class="GPD-Predom-ln2">
-            <input type="checkbox" name="GPD-PREDOM-Frontal" value="Frontal" />
+            <input type="checkbox" name="predom" value="Frontal" />
             <label>Frontal</label>
             <input
               type="checkbox"
-              name="GPD-PREDOM-Occipital"
+              name="predom"
               value="Occipital"
             />
             <label>Occipital</label><br />
-            <input type="checkbox" name="GPD-PREDOM-Midline" value="Midline" />
+            <input type="checkbox" name="predom" value="Midline" />
             <label>Midline</label>
             <input
               type="checkbox"
-              name="GPD-PREDOM-Generalized"
+              name="predom"
               value="Generalized"
             />
             <label>Generalized</label>
@@ -373,12 +374,12 @@
           <div class="LPD-2-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="lpd2_type" value="lpd2_type_1" />
+              <input type="radio" name="class_type" value="U/I" />
               U/I</label
             >
             <label>
-              <input type="radio" name="lpd2_type" value="lpd2_type_2" />
-              B/I asym</label
+              <input type="radio" name="class_type" value="B/I Asym" />
+              B/I Asym</label
             >
           </div>
           <div class="LPD-2-Predom-ln1">
@@ -387,7 +388,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-L"
+                name="predom"
                 value="L"
               />
               L</label
@@ -396,7 +397,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-F"
+                name="predom"
                 value="F"
               />
               F</label
@@ -405,7 +406,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-P"
+                name="predom"
                 value="P"
               />
               P</label
@@ -413,7 +414,7 @@
             <label>
               <input
                 type="checkbox"
-                name="LPD2-PRE-All"
+                name="predom"
                 id="LPD2-Predom-Sel-All"
                 value="All"
               />
@@ -425,7 +426,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-R"
+                name="predom"
                 value="R"
               />
               R</label
@@ -434,7 +435,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-T"
+                name="predom"
                 value="T"
               />
               T</label
@@ -443,7 +444,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="LPD2-PRE-O"
+                name="predom"
                 value="O"
               />
               O</label
@@ -463,6 +464,10 @@
 // JAVASCRIPT
 /// Need a function to return all controls to a default status
   $(document).ready(function() {
+
+
+        //need to do validation when submit is chosen -- should it be here or in classification.js
+        // using express-validator
 
         $('#select_all').click(function() {
           $('.input-check-channel input').prop('checked',this.checked);

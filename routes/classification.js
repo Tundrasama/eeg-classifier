@@ -4,20 +4,23 @@ const { check, validationResult } = require('express-validator');
 const classifications = require('../models/Classification');
 
 //app.get('/', (req, res) => res.send('API Running'));
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   console.log('GET');
-  console.log(req, res);
-  res.json(classifications);
+
+  try {
+    const Classification = await classifications.find().populate();
+
+    res.json(Classification);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 router.post('/', async (req, res) => {
   try {
-    // console.log('This is a test');
-
     // as long as these values = the same name as the model, should be able to pass into
     // model -- just unsure about
-
-    //const { channel_1, channel_2 } = req.body;
 
     const classificationFields = req.body;
     console.log(classificationFields);
@@ -25,7 +28,6 @@ router.post('/', async (req, res) => {
     classification.user = 'chris.mcgraw@harvard.edu';
     classification.picture_id = 'test_id';
 
-    // classificationFields.user = 'chris.mcgraw@harvard.edu';
     if (req.body.not_lpd_gpd) {
       console.log('Not LPD/GPD: ' + req.body.not_lpd_gpd);
       classification.submitFlag = 0;
@@ -33,8 +35,17 @@ router.post('/', async (req, res) => {
       console.log('Pass: ' + req.body.pass);
       classification.submitFlag = null;
     } else if (req.body.submit) {
-      // classification = new classifications(classificationFields);
       classification.submitFlag = 1; // need to be able to tell if submit, not lpd/gpd, or pass was pressed
+
+      const choiceFields = {};
+      choiceFields.classifier = classificationFields.classChoice;
+      choiceFields.classType = classificationFields.class_type;
+      choiceFields.predominance = classificationFields.predom;
+      classification.classificationChoice = choiceFields;
+
+      classification.montage = classificationFields.montage;
+      classification.frequency = classificationFields.frequency;
+
       classification.channel_1 = {
         selected: classificationFields.channel_1 || false
       };
@@ -92,12 +103,10 @@ router.post('/', async (req, res) => {
     }
     console.log(classification);
 
-    // await classification.save(function(err) {
-    //   if (err) return handleError(err);
-    // });
+    // commented out below while testing
     await classification.save();
     console.log('Saved...');
-    console.log(classification);
+
     res.redirect('/');
   } catch (err) {
     console.error(err.message);

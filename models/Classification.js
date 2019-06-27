@@ -260,21 +260,24 @@ const ClassificationSchema = new db.Schema({
       }
     }
   ],
-  classification: [
+  classificationChoice: [
     {
-      classifier: { String, required: true },
-      type: String,
-      predominance: [String] // could be ['L','F','P'] could be ['Frontal','Occipital','Midline']
+      classifier: String,
+      classType: String,
+      predominance: [String]
     }
   ],
   opt_classification: [
     {
-      classifier: { String, required: true },
-      type: String,
+      classifier: String,
+      classType: String,
       predominance: [String] // could be ['L','F','P'] could be ['Frontal','Occipital','Midline']
     }
   ],
   montage: {
+    type: String
+  },
+  frequency: {
     type: String
   }
 });
