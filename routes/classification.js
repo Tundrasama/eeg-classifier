@@ -1,39 +1,108 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const Classification = require('../models/Classification');
+const classifications = require('../models/Classification');
 
 //app.get('/', (req, res) => res.send('API Running'));
-router.get('/', (req, res) => res.send('API Running'));
-// @route  GET api/channels
-// @desc
-// // @access
-// router.get('/channel', async (req, res) => {
-//   try {
-//     const classification = await Classification.findOne({
-//       name: 'Fp1-F7'
-//     }).populate('name', 'selected');
+router.get('/', (req, res) => {
+  console.log('GET');
+  console.log(req, res);
+  res.json(classifications);
+});
 
-//     if (!classification) {
-//       return res.status(400).json({ msg: 'No item found...' });
-//     }
+router.post('/', async (req, res) => {
+  try {
+    // console.log('This is a test');
 
-//     res.json(classification);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
+    // as long as these values = the same name as the model, should be able to pass into
+    // model -- just unsure about
 
-router.post('/', [], async (req, res) => {
-  //res.json({ hello: 'this is a test' });
-  console.log('This is a test');
+    //const { channel_1, channel_2 } = req.body;
 
-  const { channel_1, channel_2 } = req.body;
+    const classificationFields = req.body;
+    console.log(classificationFields);
+    classification = new classifications({});
+    classification.user = 'chris.mcgraw@harvard.edu';
+    classification.picture_id = 'test_id';
 
-  console.log(channel_1, channel_2);
-  res.redirect('/');
-  //await console.log('Helloooooooooo!');
+    // classificationFields.user = 'chris.mcgraw@harvard.edu';
+    if (req.body.not_lpd_gpd) {
+      console.log('Not LPD/GPD: ' + req.body.not_lpd_gpd);
+      classification.submitFlag = 0;
+    } else if (req.body.pass) {
+      console.log('Pass: ' + req.body.pass);
+      classification.submitFlag = null;
+    } else if (req.body.submit) {
+      // classification = new classifications(classificationFields);
+      classification.submitFlag = 1; // need to be able to tell if submit, not lpd/gpd, or pass was pressed
+      classification.channel_1 = {
+        selected: classificationFields.channel_1 || false
+      };
+      classification.channel_2 = {
+        selected: classificationFields.channel_2 || false
+      };
+      classification.channel_3 = {
+        selected: classificationFields.channel_3 || false
+      };
+      classification.channel_4 = {
+        selected: classificationFields.channel_4 || false
+      };
+      classification.channel_5 = {
+        selected: classificationFields.channel_5 || false
+      };
+      classification.channel_6 = {
+        selected: classificationFields.channel_6 || false
+      };
+      classification.channel_7 = {
+        selected: classificationFields.channel_7 || false
+      };
+      classification.channel_8 = {
+        selected: classificationFields.channel_8 || false
+      };
+      classification.channel_9 = {
+        selected: classificationFields.channel_9 || false
+      };
+      classification.channel_10 = {
+        selected: classificationFields.channel_10 || false
+      };
+      classification.channel_11 = {
+        selected: classificationFields.channel_11 || false
+      };
+      classification.channel_12 = {
+        selected: classificationFields.channel_12 || false
+      };
+      classification.channel_13 = {
+        selected: classificationFields.channel_13 || false
+      };
+      classification.channel_14 = {
+        selected: classificationFields.channel_14 || false
+      };
+      classification.channel_15 = {
+        selected: classificationFields.channel_15 || false
+      };
+      classification.channel_16 = {
+        selected: classificationFields.channel_16 || false
+      };
+      classification.channel_17 = {
+        selected: classificationFields.channel_17 || false
+      };
+      classification.channel_18 = {
+        selected: classificationFields.channel_18 || false
+      };
+    }
+    console.log(classification);
+
+    // await classification.save(function(err) {
+    //   if (err) return handleError(err);
+    // });
+    await classification.save();
+    console.log('Saved...');
+    console.log(classification);
+    res.redirect('/');
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error: ' + err.message);
+  }
 });
 
 // router.post(

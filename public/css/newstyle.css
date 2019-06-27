@@ -4,9 +4,16 @@ body {
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 0.75fr 0.75fr 0.75fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.4fr 0.4fr 2.6fr 0.5fr 0.1fr 0.5fr 0.25fr;
-  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
+
+  /* Classification Selection on the bottom */
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 0.4fr 0.5fr 0.1fr 0.5f 0.5fr 2.6fr r 0.25fr;
+  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Montage Montage Montage Montage Montage Montage Montage Montage Montage Montage' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
+
+  /* Classification Selection on the bottom */
+  /* grid-template-columns: 0.75fr 0.75fr 0.75fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 0.4fr 2.6fr 0.5fr 0.1fr 0.5fr 0.25fr; */
+  /* grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit'; */
 }
 
 .Header {
@@ -17,6 +24,7 @@ body {
 .Montage {
   grid-area: Montage;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .Pass {
@@ -40,6 +48,7 @@ body {
 
 .Select-Ind {
   grid-area: Select-Ind;
+  padding-left: 80px;
 }
 
 .input-check-ind {
@@ -55,13 +64,16 @@ body {
 .Images {
   grid-area: Images;
   text-align: center;
+  padding-top: 20px;
   border-style: groove;
   border-color: black;
+  padding-left: -25px;
 }
 
 .Frequencies {
   grid-area: Frequencies;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 .LPD {
@@ -158,4 +170,17 @@ body {
 .Submit {
   grid-area: Submit;
   text-align: center;
+}
+
+.button {
+  background-color: #350cec;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

@@ -62,34 +62,34 @@
           </div>
         </div>
         <div class="Select-Ind">
-          <p style="text-align: center;"><u>Select Channel</u></p>
+          <p style="text-align: left;"><u>Select Channel</u></p>
           <div class="input-check-ind" id="checklist1">
             <input
               type="checkbox"
               class="channel1"
               name="channel_1"
-              value='true'
+              value=true
             />Fp1-F7
             <br />
             <input
               type="checkbox"
               class="channel1"
               name="channel_2"
-              value='true'
+              value=true
             />F7-T3
             <br />
             <input
               type="checkbox"
               class="channel1"
-              name="ch1_item_3"
-              value="ch1_item_3"
+              name="channel_3"
+              value=true
             />T3-T5
             <br />
             <input
               type="checkbox"
               class="channel1"
-              name="ch1_item_4"
-              value="ch1_item_4"
+              name="channel_4"
+              value=true
             />T5-O1
             <br />
             <br />
@@ -98,29 +98,29 @@
             <input
               type="checkbox"
               class="channel2"
-              name="ch2_item_1"
-              value="ch2_item_1"
+              name="channel_5"
+              value=true
             />Fp2-F8
             <br />
             <input
               type="checkbox"
               class="channel2"
-              name="ch2_item_2"
-              value="ch2_item_2"
+              name="channel_6"
+              value=true
             />F8-T4
             <br />
             <input
               type="checkbox"
               class="channel2"
-              name="ch2_item_3"
-              value="ch2_item_3"
+              name="channel_7"
+              value=true
             />T4-T6
             <br />
             <input
               type="checkbox"
               class="channel2"
-              name="ch2_item_4"
-              value="ch2_item_4"
+              name="channel_8"
+              value=true
             />T6-O2
             <br />
             <br />
@@ -129,29 +129,29 @@
             <input
               type="checkbox"
               class="channel3"
-              name="ch3_item_1"
-              value="ch3_item_1"
+              name="channel_9"
+              value=true
             />Fp1-F3
             <br />
             <input
               type="checkbox"
               class="channel3"
-              name="ch3_item_2"
-              value="ch3_item_2"
+              name="channel_10"
+              value=true
             />F3-C3
             <br />
             <input
               type="checkbox"
               class="channel3"
-              name="ch3_item_3"
-              value="ch3_item_3"
+              name="channel_11"
+              value=true
             />C3-P3
             <br />
             <input
               type="checkbox"
               class="channel3"
-              name="ch3_item_4"
-              value="ch3_item_4"
+              name="channel_12"
+              value=true
             />P3-O1
             <br />
             <br />
@@ -160,29 +160,29 @@
             <input
               type="checkbox"
               class="channel4"
-              name="ch4_item_1"
-              value="ch4_item_1"
+              name="channel_13"
+              value=true
             />Fp2-F4
             <br />
             <input
               type="checkbox"
               class="channel4"
-              name="ch4_item_2"
-              value="ch4_item_2"
+              name="channel_14"
+              value=true
             />F4-C4
             <br />
             <input
               type="checkbox"
               class="channel4"
-              name="ch4_item_3"
-              value="ch4_item_3"
+              name="channel_15"
+              value=true
             />C4-P4
             <br />
             <input
               type="checkbox"
               class="channel4"
-              name="ch4_item_4"
-              value="ch4_item_4"
+              name="channel_16"
+              value=true
             />P4-O2
             <br />
             <br />
@@ -191,27 +191,31 @@
             <input
               type="checkbox"
               class="channel5"
-              name="ch5_item_1"
-              value="ch5_item_1"
+              name="channel_17"
+              value=true
             />Fz-Cz
             <br />
             <input
               type="checkbox"
               class="channel5"
-              name="ch5_item_2"
-              value="ch5_item_2"
+              name="channel_18"
+              value=true
             />Cz-Pz
             <br />
             <br />
           </div>
         </div>
         <div class="Images">
-          <p>Images</p>
+          
+          <!-- may want to constrain the image or adjust the checkboxes to match up with the image -->
+          <!-- src="media/eeg-picture.JPG" -->
           <img
             src="media/eeg-picture.JPG"
             alt="eeg-picture"
-            style="width:1400px;height:550px;"
+            style="width:1400px;height:580px;"
+            class="currImage"
           />
+          <p>Image X of 1500</p>
         </div>
         <div class="Frequencies">
           <p>Frequency (Hz)</p>
@@ -447,100 +451,107 @@
           </div>
         </div>
         <div class="Submit">
-          <input type="submit" value="submit" id="submit">
+          <input type="submit" class="button" name="submit" value="Submit" id="submit">
+          <input type="submit" class="button" name="not_lpd_gpd" value="Not LPD/GPD"></button>
+          <input type="submit" class="button" name="pass" value="Pass"></button>
+          
         </div>
+        
       </div>
     </form>
     <script>
 // JAVASCRIPT
 /// Need a function to return all controls to a default status
-      $('#select_all').click(function() {
-        $('.input-check-channel input').prop('checked',this.checked);
-        $('.input-check-ind input').prop('checked',this.checked);
-      });
+  $(document).ready(function() {
 
-      $('.input-check-channel input').click(function(e) {
-        // console.log(e.target.id + ' ' + this.checked);
-        // console.log('#checklist' + e.target.id.replace('select_channel_',''));
-        $('#checklist' + e.target.id.replace('select_channel_','') + ' :input').prop('checked',this.checked);
-        var selected = [];
-        $('.input-check-channel input:checked').each(function() {
-            selected.push($(this).attr('name'));
+        $('#select_all').click(function() {
+          $('.input-check-channel input').prop('checked',this.checked);
+          $('.input-check-ind input').prop('checked',this.checked);
         });
-        if (selected.length==5) {
-          $('#select_all').prop('checked',this.checked);
-        } else {
-          $('#select_all').prop('checked',false);
+
+        $('.input-check-channel input').click(function(e) {
+          // console.log(e.target.id + ' ' + this.checked);
+          // console.log('#checklist' + e.target.id.replace('select_channel_',''));
+          $('#checklist' + e.target.id.replace('select_channel_','') + ' :input').prop('checked',this.checked);
+          var selected = [];
+          $('.input-check-channel input:checked').each(function() {
+              selected.push($(this).attr('name'));
+          });
+          if (selected.length==5) {
+            $('#select_all').prop('checked',this.checked);
+          } else {
+            $('#select_all').prop('checked',false);
+          }
+        });
+
+  //TODO: can improve below
+        // TODO: Need the All checkbox in predominance sections to selec tother items
+        // haven't added functionality for ind checkboxes to uncheck the all
+        $('#LPD-Predom-Sel-All').click(function() {
+          $(this.form.elements)
+            .filter('.LPD-PREDOM')
+            .prop('checked', this.checked);
+          $('input[name=select_all]').attr('checked', false);
+        });
+        $('#LPD2-Predom-Sel-All').click(function() {
+          $(this.form.elements)
+            .filter('.LPD2-PREDOM')
+            .prop('checked', this.checked);
+          $('input[name=select_all]').attr('checked', false);
+        });
+
+        disableDiv('#LPD');
+        disableDiv('#GPD');
+        disableDiv('#LPD2');
+  // could disable controls until a selection is made
+  // LPD Classification Checked -- disable GPD and LPD2
+        function disableDiv(ctrl){
+          $(ctrl).fadeTo('fast',.49);
+          document.getElementById(ctrl.replace("#","")+'-CHECK').checked=false;
+          unCheck(ctrl)
         }
-      });
 
-//TODO: can improve below
-      // TODO: Need the All checkbox in predominance sections to selec tother items
-      // haven't added functionality for ind checkboxes to uncheck the all
-      $('#LPD-Predom-Sel-All').click(function() {
-        $(this.form.elements)
-          .filter('.LPD-PREDOM')
-          .prop('checked', this.checked);
-        $('input[name=select_all]').attr('checked', false);
-      });
-      $('#LPD2-Predom-Sel-All').click(function() {
-        $(this.form.elements)
-          .filter('.LPD2-PREDOM')
-          .prop('checked', this.checked);
-        $('input[name=select_all]').attr('checked', false);
-      });
+        function unCheck(ctrl){
+          $(ctrl).find(':input').prop({checked:false,disabled:true});
+        }
 
-      disableDiv('#LPD');
-      disableDiv('#GPD');
-      disableDiv('#LPD2');
-// could disable controls until a selection is made
-// LPD Classification Checked -- disable GPD and LPD2
-      function disableDiv(ctrl){
-        $(ctrl).fadeTo('fast',.49);
-        document.getElementById(ctrl.replace("#","")+'-CHECK').checked=false;
-        unCheck(ctrl)
-      }
+        function enableDiv(ctrl){
+          $(ctrl).fadeTo('fast',1);
+          $(ctrl).find(':input').prop('disabled',false);
+        }
 
-      function unCheck(ctrl){
-        $(ctrl).find(':input').prop({checked:false,disabled:true});
-      }
-
-      function enableDiv(ctrl){
-        $(ctrl).fadeTo('fast',1);
-        $(ctrl).find(':input').prop('disabled',false);
-      }
-
-      document.getElementById('LPD-CHECK').onclick = function(){
-        enableDiv("#LPD");
-        console.log(this.checked)
-        if (this.checked==false) {
+        document.getElementById('LPD-CHECK').onclick = function(){
+          enableDiv("#LPD");
+          console.log(this.checked)
+          if (this.checked==false) {
+            enableDiv("#GPD");
+            enableDiv("#LPD2");
+          } else {
+            disableDiv('#GPD');
+            disableDiv('#LPD2');
+          }
+        }
+        document.getElementById('GPD-CHECK').onclick = function(){
           enableDiv("#GPD");
+          if (this.checked==false) {
+            enableDiv('#LPD');
+            enableDiv('#LPD2');
+          } else {
+            disableDiv('#LPD');
+            disableDiv('#LPD2');
+          }
+        }
+        document.getElementById('LPD2-CHECK').onclick = function(){
           enableDiv("#LPD2");
-        } else {
-          disableDiv('#GPD');
-          disableDiv('#LPD2');
+          if (this.checked==false) {
+            enableDiv('#GPD');
+            enableDiv('#LPD');
+          } else {
+            disableDiv('#GPD');
+            disableDiv('#LPD');
+          }
         }
-      }
-      document.getElementById('GPD-CHECK').onclick = function(){
-        enableDiv("#GPD");
-        if (this.checked==false) {
-          enableDiv('#LPD');
-          enableDiv('#LPD2');
-        } else {
-          disableDiv('#LPD');
-          disableDiv('#LPD2');
-        }
-      }
-      document.getElementById('LPD2-CHECK').onclick = function(){
-        enableDiv("#LPD2");
-        if (this.checked==false) {
-          enableDiv('#GPD');
-          enableDiv('#LPD');
-        } else {
-          disableDiv('#GPD');
-          disableDiv('#LPD');
-        }
-      }
+      })
     </script>
   </body>
 </html>

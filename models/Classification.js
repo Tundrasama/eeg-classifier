@@ -2,12 +2,12 @@ const db = require('mongoose');
 
 const ClassificationSchema = new db.Schema({
   user: {
-    type: String,
-    required: true
+    type: String
+    //required: true
   },
   picture_id: {
-    type: String,
-    required: true
+    type: String
+    //required: true
   }, // should be passed when the classification analysis is inserted
   date: {
     type: Date,
@@ -16,6 +16,9 @@ const ClassificationSchema = new db.Schema({
   submitFlag: {
     type: Number
     // if submitted should be one, if 'not LPD/GPD' then 0, if pass, should be NaN (Null), if
+  },
+  channel_test: {
+    type: Boolean
   },
   channel_1: [
     {
@@ -276,144 +279,7 @@ const ClassificationSchema = new db.Schema({
   }
 });
 
-exports = Classification = db.model('classification', ClassificationSchema);
-
-//   group_1:[
-//     {
-
-//     channel_1:
-//       {
-//         name:  {type: String, default: 'Fp1-F7'},
-//         selected: boolean
-//       },
-//     channel_2:
-//     [
-//       {
-//         name: {type: String,  default: 'F7-T3'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_3:
-//     [
-//       {
-//         name: {type: String,  default: 'T3-T5'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_4:
-//     [
-//       {
-//         name: {type: String,  default: 'T5-01'},
-//         selected: boolean
-//       }
-//     ]
-//     }
-//   ],
-//   group_2:[
-//     channel_1:
-//     [
-//       {
-//         name: {type: String,  default: 'Fp2-F8'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_2:
-//     [
-//       {
-//         name: {type: String,  default: 'F8-T4'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_3:
-//     [
-//       {
-//         name: {type: String,  default: 'T4-T6'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_4:
-//     [
-//       {
-//         name: {type: String,  default: 'T6-O2'},
-//         selected: boolean
-//       }
-//     ]
-//   ],
-//   group_3:[
-//     channel_1:
-//     [
-//       {
-//         name: {type: String,  default: 'Fp1-F3'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_2:
-//     [
-//       {
-//         name: {type: String,  default: 'F3-T3'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_3:
-//     [
-//       {
-//         name: {type: String,  default: 'C3-P3'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_4:
-//     [
-//       {
-//         name: {type: String,  default: 'P3-O1'},
-//         selected: boolean
-//       }
-//     ]
-//   ],
-//   group_4:[
-//    channel_1:
-//     [
-//       {
-//         name: {type: String,  default: 'Fp2-F4'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_2:
-//     [
-//       {
-//         name: {type: String,  default: 'F4-C4'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_3:
-//     [
-//       {
-//         name: {type: String,  default: 'C4-P4'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_4:
-//     [
-//       {
-//         name: {type: String,  default: 'P4-O2'},
-//         selected: boolean
-//       }
-//     ]
-//   ],
-//   group_5:[
-//     channel_1:
-//     [
-//       {
-//         name: {type: String,  default: 'Fz-Cz'},
-//         selected: boolean
-//       }
-//     ],
-//     channel_2:
-//     [
-//       {
-//         name: {type: String,  default: 'Cz-Pz'},
-//         selected: boolean
-//       }
-//     ]
-//   ]
-// ]
-// }
+module.exports = Classification = db.model(
+  'classification',
+  ClassificationSchema
+);
