@@ -30,6 +30,74 @@ body {
   /* grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit'; */
 }
 
+/* Custom Checkboxes */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  text-align: center;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* End Custom Checkboxes */
 .wrapper {
   align-items: center;
   justify-items: center;
@@ -91,6 +159,12 @@ body {
   /* border-style: groove;
   border-color: black;
   padding-left: -25px; */
+}
+
+.Images img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .Frequencies {
