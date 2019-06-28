@@ -4,17 +4,24 @@ body {
 }
 .grid-container {
   display: grid;
-  width: 1300px;
-  height: 768px;
-
+  width: 100%;
+  height: 95vh;
+  overflow: visible;
   /* Classification Selection on the bottom
   grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
   grid-template-rows: 0.1fr 0.1fr 0.5fr 2.6fr 0.25fr;
   grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Montage Montage Montage Montage Montage Montage Montage Montage Montage Montage' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit'; */
 
   /* Classification Selection on the bottom -- montage removed */
+  /* Frames for columns/rows */
+  /* grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
+  grid-template-rows: 0.5fr 0.05fr 0.05fr 0.5fr 2.6fr 0.25fr; */
+
+  /* Percentages for columns/rows */
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
   grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
-  grid-template-rows: 0.5fr 0.05fr 0.05fr 0.5fr 2.6fr 0.25fr;
+  grid-template-rows: 5% 3% 10% 70% 8% 5%;
   grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
 
   /* Classification Selection on the bottom */
@@ -89,7 +96,7 @@ body {
 .Frequencies {
   grid-area: Frequencies;
   text-align: center;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
 }
 
 .LPD {

@@ -108,7 +108,6 @@ router.post('/', async (req, res) => {
       };
     }
     console.log(classification);
-
     // commented out below while testing
     await classification.save();
     console.log('Saved...');
