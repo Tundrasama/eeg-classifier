@@ -4,11 +4,18 @@ body {
 }
 .grid-container {
   display: grid;
+  width: 1300px;
+  height: 768px;
 
-  /* Classification Selection on the bottom */
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
-  grid-template-rows: 0.4fr 0.5fr 0.1fr 0.5f 0.5fr 2.6fr r 0.25fr;
-  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Montage Montage Montage Montage Montage Montage Montage Montage Montage Montage' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
+  /* Classification Selection on the bottom
+  grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-template-rows: 0.1fr 0.1fr 0.5fr 2.6fr 0.25fr;
+  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Montage Montage Montage Montage Montage Montage Montage Montage Montage Montage' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit'; */
+
+  /* Classification Selection on the bottom -- montage removed */
+  grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
+  grid-template-rows: 0.5fr 0.05fr 0.05fr 0.5fr 2.6fr 0.25fr;
+  grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
 
   /* Classification Selection on the bottom */
   /* grid-template-columns: 0.75fr 0.75fr 0.75fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -16,9 +23,15 @@ body {
   /* grid-template-areas: 'Header Header Header Header Header Header Header Header Header Header' 'Montage Montage Montage Montage Montage Pass Pass Pass Pass Pass' 'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies' 'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header' 'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit'; */
 }
 
+.wrapper {
+  align-items: center;
+  justify-items: center;
+}
+
 .Header {
   grid-area: Header;
   text-align: center;
+  background-color: rgba(60, 60, 202, 0.493);
 }
 
 .Montage {
@@ -35,24 +48,26 @@ body {
 .Select-All {
   grid-area: Select-All;
   text-align: center;
+  margin-top: 15px;
 }
 
 .Select-Channel {
   grid-area: Select-Channel;
   text-align: center;
+  margin-top: 15px;
 }
 
 .input-check-channel input {
-  margin-bottom: 100px;
+  margin-bottom: 103px;
 }
 
 .Select-Ind {
   grid-area: Select-Ind;
-  padding-left: 80px;
+  margin-top: 15px;
 }
 
 .input-check-ind {
-  margin-bottom: 6px;
+  margin-bottom: 9.25px;
   margin-left: 25px;
 }
 
@@ -65,9 +80,10 @@ body {
   grid-area: Images;
   text-align: center;
   padding-top: 20px;
-  border-style: groove;
+  /* margin-left: -300px; */
+  /* border-style: groove;
   border-color: black;
-  padding-left: -25px;
+  padding-left: -25px; */
 }
 
 .Frequencies {
@@ -78,7 +94,7 @@ body {
 
 .LPD {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 'LPD-Type LPD-Predom-ln1 LPD-Predom-ln1' 'LPD-Type LPD-Predom-ln2 LPD-Predom-ln2';
   grid-area: LPD;
@@ -106,7 +122,7 @@ body {
 
 .GPD {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 'GPD-Predom-ln1 GPD-Predom-ln1 GPD-Predom-ln1' 'GPD-Predom-ln2 GPD-Predom-ln2 GPD-Predom-ln2';
   grid-area: GPD;
@@ -126,7 +142,7 @@ body {
 
 .LPD2 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 'LPD-2-Type LPD-2-Predom-ln1 LPD-2-Predom-ln1' 'LPD-2-Type LPD-2-Predom-ln2 LPD-2-Predom-ln2';
   grid-area: LPD-2;

@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     console.log(classificationFields);
     classification = new classifications({});
     classification.user = 'chris.mcgraw@harvard.edu';
-    classification.picture_id = 'test_id';
+    classification.picture_path = 'test_id';
 
     if (req.body.not_lpd_gpd) {
       console.log('Not LPD/GPD: ' + req.body.not_lpd_gpd);
@@ -43,7 +43,13 @@ router.post('/', async (req, res) => {
       choiceFields.predominance = classificationFields.predom;
       classification.classificationChoice = choiceFields;
 
-      classification.montage = classificationFields.montage;
+      const optChoiceFields = {};
+      optChoiceFields.classifier = classificationFields.opt_classChoice;
+      optChoiceFields.classType = classificationFields.opt_class_type;
+      optChoiceFields.predominance = classificationFields.opt_predom;
+      classification.opt_classificationChoice = optChoiceFields;
+
+      classification.montage = classificationFields.montage || 'bipolar';
       classification.frequency = classificationFields.frequency;
 
       classification.channel_1 = {

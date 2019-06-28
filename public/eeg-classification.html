@@ -8,22 +8,23 @@
   </head>
   <body>
     <form action="/eeg-classification" method="POST" id="classForm">
+      <div class="wrapper">
       <div class="grid-container">
         <div class="Header">
-          <p>Image X of 1500</p>
+          <p>EEG Classifier</p>
         </div>
-        <div class="Montage">
+        <!-- <div class="Montage">
           <p>Montage</p>
           <input type="radio" name="montage" value="bipolar" />
           <label>Bipolar</label>
           <input type="radio" name="montage" value="average" />
           <label>Average</label>
-        </div>
-        <div class="Pass">
+        </div> -->
+        <!-- <div class="Pass">
           <p>Pass</p>
-        </div>
+        </div> -->
         <div class="Select-All">
-          <p><u>Select All Channels</u></p>
+          <p><u>ALL</u></p>
           <input
             type="checkbox"
             name="select_all"
@@ -32,7 +33,7 @@
           />
         </div>
         <div class="Select-Channel">
-          <p><u>Select All - Channel (#)</u></p>
+          <p><u>CHAIN</u></p>
           <div class="input-check-channel">
             <input
               type="checkbox"
@@ -62,7 +63,7 @@
           </div>
         </div>
         <div class="Select-Ind">
-          <p style="text-align: left;"><u>Select Channel</u></p>
+          <p style="text-align: center;"><u>IND</u></p>
           <div class="input-check-ind" id="checklist1">
             <input
               type="checkbox"
@@ -210,9 +211,9 @@
           <!-- may want to constrain the image or adjust the checkboxes to match up with the image -->
           <!-- src="media/eeg-picture.JPG" -->
           <img
-            src="media/eeg-picture.JPG"
+            src="media/images/LPD_Sample272_sid927_20140125_180156_011276.mat_bi.png"
             alt="eeg-picture"
-            style="width:1400px;height:580px;"
+            style="max-width:850px;height:auto;"
             class="currImage"
           />
           <p>Image X of 1500</p>
@@ -259,7 +260,7 @@
           <input
           type="checkbox"
           class="LPD2-CLASSIFICATION"
-          name="classChoice"
+          name="opt_classChoice"
           value="LPD2"
           id="LPD2-CHECK"
         /></div>
@@ -374,11 +375,11 @@
           <div class="LPD-2-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="class_type" value="U/I" />
+              <input type="radio" name="opt_class_type" value="U/I" />
               U/I</label
             >
             <label>
-              <input type="radio" name="class_type" value="B/I Asym" />
+              <input type="radio" name="opt_class_type" value="B/I Asym" />
               B/I Asym</label
             >
           </div>
@@ -388,7 +389,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="L"
               />
               L</label
@@ -397,7 +398,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="F"
               />
               F</label
@@ -406,7 +407,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="P"
               />
               P</label
@@ -414,7 +415,7 @@
             <label>
               <input
                 type="checkbox"
-                name="predom"
+                name="opt_predom"
                 id="LPD2-Predom-Sel-All"
                 value="All"
               />
@@ -426,7 +427,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="R"
               />
               R</label
@@ -435,7 +436,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="T"
               />
               T</label
@@ -444,7 +445,7 @@
               <input
                 type="checkbox"
                 class="LPD2-PREDOM"
-                name="predom"
+                name="opt_predom"
                 value="O"
               />
               O</label
@@ -459,6 +460,7 @@
         </div>
         
       </div>
+    </div>
     </form>
     <script>
 // JAVASCRIPT
@@ -508,6 +510,32 @@
         disableDiv('#LPD');
         disableDiv('#GPD');
         disableDiv('#LPD2');
+        disableControls();
+
+        function disableControls(){
+          $('.Select-All').fadeTo('fast',.49);
+          $('.Select-Channel').fadeTo('fast',.49);
+          $('.Select-Ind').fadeTo('fast',.49);
+          $('.Frequencies').fadeTo('fast',.49);
+
+          $('.Select-All :input').prop('disabled',true); 
+          $('.Select-Channel :input').prop('disabled',true);
+          $('.Select-Ind :input').prop('disabled',true); 
+          $('.Frequencies :input').prop('disabled',true);  
+        }
+
+        function enableControls(){
+          $('.Select-All').fadeTo('fast',1);
+          $('.Select-Channel').fadeTo('fast',1);
+          $('.Select-Ind').fadeTo('fast',1);
+          $('.Frequencies').fadeTo('fast',1);
+
+          $('.Select-All :input').prop('disabled',false); 
+          $('.Select-Channel :input').prop('disabled',false);
+          $('.Select-Ind :input').prop('disabled',false); 
+          $('.Frequencies :input').prop('disabled',false); 
+        }
+
   // could disable controls until a selection is made
   // LPD Classification Checked -- disable GPD and LPD2
         function disableDiv(ctrl){
@@ -529,9 +557,13 @@
           enableDiv("#LPD");
           console.log(this.checked)
           if (this.checked==false) {
-            enableDiv("#GPD");
-            enableDiv("#LPD2");
+            disableDiv('#LPD');
+            disableDiv('#LPD2');
+            disableControls();
+            // enableDiv("#GPD");
+            // enableDiv("#LPD2");
           } else {
+            enableControls();
             disableDiv('#GPD');
             disableDiv('#LPD2');
           }
@@ -539,9 +571,12 @@
         document.getElementById('GPD-CHECK').onclick = function(){
           enableDiv("#GPD");
           if (this.checked==false) {
-            enableDiv('#LPD');
-            enableDiv('#LPD2');
+            disableDiv('#GPD');
+            disableControls();
+            // enableDiv('#LPD');
+            // enableDiv('#LPD2');
           } else {
+            enableControls();
             disableDiv('#LPD');
             disableDiv('#LPD2');
           }
@@ -549,11 +584,14 @@
         document.getElementById('LPD2-CHECK').onclick = function(){
           enableDiv("#LPD2");
           if (this.checked==false) {
-            enableDiv('#GPD');
-            enableDiv('#LPD');
+            // enableDiv('#GPD');
+            disableDiv('#LPD2')
           } else {
             disableDiv('#GPD');
-            disableDiv('#LPD');
+            enableDiv('#LPD');
+            enableControls();
+            document.getElementById('LPD-CHECK').checked=true;
+            // disableDiv('#LPD');
           }
         }
       })

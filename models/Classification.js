@@ -5,7 +5,7 @@ const ClassificationSchema = new db.Schema({
     type: String
     //required: true
   },
-  picture_id: {
+  picture_path: {
     type: String
     //required: true
   }, // should be passed when the classification analysis is inserted
@@ -267,11 +267,11 @@ const ClassificationSchema = new db.Schema({
       predominance: [String]
     }
   ],
-  opt_classification: [
+  opt_classificationChoice: [
     {
       classifier: String,
       classType: String,
-      predominance: [String] // could be ['L','F','P'] could be ['Frontal','Occipital','Midline']
+      predominance: [String]
     }
   ],
   montage: {
