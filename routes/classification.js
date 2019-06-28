@@ -17,107 +17,111 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  try {
-    // as long as these values = the same name as the model, should be able to pass into
-    // model -- just unsure about
+router.post(
+  '/',
 
-    const classificationFields = req.body;
-    console.log(classificationFields);
-    classification = new classifications({});
-    classification.user = 'chris.mcgraw@harvard.edu';
-    classification.picture_path = 'test_id';
+  async (req, res) => {
+    try {
+      // as long as these values = the same name as the model, should be able to pass into
+      // model -- just unsure about
 
-    if (req.body.not_lpd_gpd) {
-      console.log('Not LPD/GPD: ' + req.body.not_lpd_gpd);
-      classification.submitFlag = 0;
-    } else if (req.body.pass) {
-      console.log('Pass: ' + req.body.pass);
-      classification.submitFlag = null;
-    } else if (req.body.submit) {
-      classification.submitFlag = 1; // need to be able to tell if submit, not lpd/gpd, or pass was pressed
+      const classificationFields = req.body;
+      console.log(classificationFields);
+      classification = new classifications({});
+      classification.user = 'chris.mcgraw@harvard.edu';
+      classification.picture_path = 'test_id';
 
-      const choiceFields = {};
-      choiceFields.classifier = classificationFields.classChoice;
-      choiceFields.classType = classificationFields.class_type;
-      choiceFields.predominance = classificationFields.predom;
-      classification.classificationChoice = choiceFields;
+      if (req.body.not_lpd_gpd) {
+        console.log('Not LPD/GPD: ' + req.body.not_lpd_gpd);
+        classification.submitFlag = 0;
+      } else if (req.body.pass) {
+        console.log('Pass: ' + req.body.pass);
+        classification.submitFlag = null;
+      } else if (req.body.submit) {
+        classification.submitFlag = 1; // need to be able to tell if submit, not lpd/gpd, or pass was pressed
 
-      const optChoiceFields = {};
-      optChoiceFields.classifier = classificationFields.opt_classChoice;
-      optChoiceFields.classType = classificationFields.opt_class_type;
-      optChoiceFields.predominance = classificationFields.opt_predom;
-      classification.opt_classificationChoice = optChoiceFields;
+        const choiceFields = {};
+        choiceFields.classifier = classificationFields.classChoice;
+        choiceFields.classType = classificationFields.class_type;
+        choiceFields.predominance = classificationFields.predom;
+        classification.classificationChoice = choiceFields;
 
-      classification.montage = classificationFields.montage || 'bipolar';
-      classification.frequency = classificationFields.frequency;
+        const optChoiceFields = {};
+        optChoiceFields.classifier = classificationFields.opt_classChoice;
+        optChoiceFields.classType = classificationFields.opt_class_type;
+        optChoiceFields.predominance = classificationFields.opt_predom;
+        classification.opt_classificationChoice = optChoiceFields;
 
-      classification.channel_1 = {
-        selected: classificationFields.channel_1 || false
-      };
-      classification.channel_2 = {
-        selected: classificationFields.channel_2 || false
-      };
-      classification.channel_3 = {
-        selected: classificationFields.channel_3 || false
-      };
-      classification.channel_4 = {
-        selected: classificationFields.channel_4 || false
-      };
-      classification.channel_5 = {
-        selected: classificationFields.channel_5 || false
-      };
-      classification.channel_6 = {
-        selected: classificationFields.channel_6 || false
-      };
-      classification.channel_7 = {
-        selected: classificationFields.channel_7 || false
-      };
-      classification.channel_8 = {
-        selected: classificationFields.channel_8 || false
-      };
-      classification.channel_9 = {
-        selected: classificationFields.channel_9 || false
-      };
-      classification.channel_10 = {
-        selected: classificationFields.channel_10 || false
-      };
-      classification.channel_11 = {
-        selected: classificationFields.channel_11 || false
-      };
-      classification.channel_12 = {
-        selected: classificationFields.channel_12 || false
-      };
-      classification.channel_13 = {
-        selected: classificationFields.channel_13 || false
-      };
-      classification.channel_14 = {
-        selected: classificationFields.channel_14 || false
-      };
-      classification.channel_15 = {
-        selected: classificationFields.channel_15 || false
-      };
-      classification.channel_16 = {
-        selected: classificationFields.channel_16 || false
-      };
-      classification.channel_17 = {
-        selected: classificationFields.channel_17 || false
-      };
-      classification.channel_18 = {
-        selected: classificationFields.channel_18 || false
-      };
+        classification.montage = classificationFields.montage || 'bipolar';
+        classification.frequency = classificationFields.frequency;
+
+        classification.channel_1 = {
+          selected: classificationFields.channel_1 || false
+        };
+        classification.channel_2 = {
+          selected: classificationFields.channel_2 || false
+        };
+        classification.channel_3 = {
+          selected: classificationFields.channel_3 || false
+        };
+        classification.channel_4 = {
+          selected: classificationFields.channel_4 || false
+        };
+        classification.channel_5 = {
+          selected: classificationFields.channel_5 || false
+        };
+        classification.channel_6 = {
+          selected: classificationFields.channel_6 || false
+        };
+        classification.channel_7 = {
+          selected: classificationFields.channel_7 || false
+        };
+        classification.channel_8 = {
+          selected: classificationFields.channel_8 || false
+        };
+        classification.channel_9 = {
+          selected: classificationFields.channel_9 || false
+        };
+        classification.channel_10 = {
+          selected: classificationFields.channel_10 || false
+        };
+        classification.channel_11 = {
+          selected: classificationFields.channel_11 || false
+        };
+        classification.channel_12 = {
+          selected: classificationFields.channel_12 || false
+        };
+        classification.channel_13 = {
+          selected: classificationFields.channel_13 || false
+        };
+        classification.channel_14 = {
+          selected: classificationFields.channel_14 || false
+        };
+        classification.channel_15 = {
+          selected: classificationFields.channel_15 || false
+        };
+        classification.channel_16 = {
+          selected: classificationFields.channel_16 || false
+        };
+        classification.channel_17 = {
+          selected: classificationFields.channel_17 || false
+        };
+        classification.channel_18 = {
+          selected: classificationFields.channel_18 || false
+        };
+      }
+      console.log(classification);
+      // commented out below while testing
+      await classification.save();
+      console.log('Saved...');
+
+      res.redirect('/');
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error: ' + err.message);
     }
-    console.log(classification);
-    // commented out below while testing
-    await classification.save();
-    console.log('Saved...');
-
-    res.redirect('/');
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error: ' + err.message);
   }
-});
+);
 
 // router.post(
 //   '/',
