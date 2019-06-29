@@ -686,19 +686,134 @@
             down[e.keyCode] = true;
         }).keyup(function(e) {
             if (down[76] && down[50]) {
+              //could change to tigger('click')
                 enableDiv('#LPD2')
                 document.getElementById('LPD2-CHECK').checked=true;
             }
             down[e.keyCode] = false;
         });
 
+        var chosenChannel = ''
+
         document.onkeydown = function(e) {
-          // alert(e.ctrlkey + ' | ' + e.key + ' | ' + e.which);
-          console.log(LDP)
-          if (e.ctrlKey && e.which == 76) {
-            alert("that's the ticket");
+          //alert(e.ctrlkey + ' | ' + e.key + ' | ' + e.which);
+          // select all channel -- still need a 'SELECT ALL'
+          if (e.ctrlKey && e.which == 49) {
+            // alert("ctrl+1");
+            $('#select_channel_1').trigger('click');
+            e.preventDefault();
+          }
+          if (e.ctrlKey && e.which == 50) {
+            // alert("ctrl+2");
+            $('#select_channel_2').trigger('click');
+            e.preventDefault();
+          }
+          if (e.ctrlKey && e.which == 51) {
+            // alert("ctrl+3");
+            $('#select_channel_3').trigger('click');
+            e.preventDefault();
+          }
+          if (e.ctrlKey && e.which == 52) {
+            // alert("ctrl+4");
+            $('#select_channel_4').trigger('click');
+            e.preventDefault();
+          }
+          if (e.ctrlKey && e.which == 53) {
+            // alert("ctrl+5");
+            $('#select_channel_5').trigger('click');
+            e.preventDefault();
           }
 
+          // enter channel
+          if (e.shiftKey && e.which == 49) {
+            // alert("shift+1");
+            chosenChannel = "#checklist1"
+            e.preventDefault();
+          }
+          if (e.shiftKey && e.which == 50) {
+            // alert("shift+2");
+            chosenChannel = "#checklist2"
+            e.preventDefault();
+          }
+          if (e.shiftKey && e.which == 51) {
+            // alert("shift+3");
+            chosenChannel = "#checklist3"
+            e.preventDefault();
+          }
+          if (e.shiftKey && e.which == 52) {
+            // alert("shift+4");
+            chosenChannel = "#checklist4"
+            e.preventDefault();
+          }
+          if (e.shiftKey && e.which == 53) {
+            // alert("shift+5");
+            chosenChannel = "#checklist5"
+            e.preventDefault();
+          }
+
+         
+
+          // delete channel
+          if (e.altKey && e.which == 49) {
+
+            // could condense this
+            // alert("alt+1");
+
+            // $('#checklist1 input').eq(0).prop('checked',false);
+            if (chosenChannel) {
+              // alert('deleting first channel from group:  ' + chosenChannel);
+              $(chosenChannel + ' input').eq(0).trigger('click');
+            } else {
+              alert("You must first select a channel with SHIFT + CHAIN #");
+            }
+            e.preventDefault();
+          }
+          if (e.altKey && e.which == 50) {
+            // alert("alt+2");
+            if (chosenChannel) {
+              // alert('deleting first channel from group:  ' + chosenChannel);
+              $(chosenChannel + ' input').eq(1).trigger('click');
+            } else {
+              alert("You must first select a channel with SHIFT + CHAIN #");
+            }
+            e.preventDefault();
+          }
+          if (e.altKey && e.which == 51) {
+            // alert("alt+3");
+            if (chosenChannel) {
+              // alert('deleting first channel from group:  ' + chosenChannel);
+              $(chosenChannel + ' input').eq(2).trigger('click');
+            } else {
+              alert("You must first select a channel with SHIFT + CHAIN #");
+            }
+            e.preventDefault();
+          }
+          if (e.altKey && e.which == 52) {
+            // alert("alt+4");
+            if (chosenChannel) {
+              // alert('deleting first channel from group:  ' + chosenChannel);
+              $(chosenChannel + ' input').eq(3).trigger('click');
+            } else {
+              alert("You must first select a channel with SHIFT + CHAIN #");
+            }
+            e.preventDefault();
+          }
+          if (e.altKey && e.which == 53) {
+            // alert("alt+5");
+            if (chosenChannel) {
+              // alert('deleting first channel from group:  ' + chosenChannel);
+              $(chosenChannel + ' input').eq(4).trigger('click');
+            } else {
+              alert("You must first select a channel with SHIFT + CHAIN #");
+            }
+            e.preventDefault();
+          }
+          
+          // 1 = 49
+          // 2 = 50
+          // 3 = 51
+          // 4 = 52
+          // 5 = 53
 
         }
 
@@ -737,7 +852,7 @@
               enableControls();
             }
             break;
-           case 192:
+           case 192 && (e.ctrlKey && e.altKey && e.shiftKey):
             // alert('<0.5');
             $('input[name=frequency]:eq(0)').prop('checked', true);
             break;
