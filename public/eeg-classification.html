@@ -681,20 +681,61 @@
         }
 
       //Hot Keys
+        var down = [];
+        $(document).keydown(function(e) {
+            down[e.keyCode] = true;
+        }).keyup(function(e) {
+            if (down[76] && down[50]) {
+                enableDiv('#LPD2')
+                document.getElementById('LPD2-CHECK').checked=true;
+            }
+            down[e.keyCode] = false;
+        });
+
+        document.onkeydown = function(e) {
+          // alert(e.ctrlkey + ' | ' + e.key + ' | ' + e.which);
+          console.log(LDP)
+          if (e.ctrlKey && e.which == 76) {
+            alert("that's the ticket");
+          }
+
+
+        }
+
         document.onkeyup = function(e) {
           // alert('button pressed: ' + e.which);
           switch (e.which) {
+           // SELECT/DE-SELECT LPD
            case 76:
             // alert('l');
-            document.getElementById('LPD-CHECK').checked=true;
-            enableDiv('#LPD');
-            enableControls();
+            if (document.getElementById('LPD-CHECK').checked==true) {
+              disableDiv('#LPD');
+              disableDiv('#LPD2');
+              disableDiv('#GPD');
+              disableControls();
+            } else {
+              document.getElementById('LPD-CHECK').checked=true;
+              enableDiv('#LPD');
+              disableDiv('#GPD');
+              enableControls();
+            }
             break;
+
+           // SELECT/DE-SELECT GPD
            case 71:
             // alert('g');
-            document.getElementById('GPD-CHECK').checked=true;
-            enableDiv('#GPD');
-            enableControls();
+            if (document.getElementById('GPD-CHECK').checked==true) {
+              disableDiv('#LPD');
+              disableDiv('#LPD2');
+              disableDiv('#GPD');
+              disableControls();
+            } else {
+              document.getElementById('GPD-CHECK').checked=true;
+              disableDiv('#LPD');
+              disableDiv('#LPD2');
+              enableDiv('#GPD');
+              enableControls();
+            }
             break;
            case 192:
             // alert('<0.5');

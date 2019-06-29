@@ -28,7 +28,17 @@ router.post(
       const classificationFields = req.body;
       console.log(classificationFields);
       classification = new classifications({});
-      classification.user = 'chris.mcgraw@harvard.edu';
+
+      const randNum = Math.floor(Math.random() * 5);
+
+      if (randNum == 1) {
+        classification.user = 'chris.mcgraw@harvard.edu';
+      } else if (randNum == 4) {
+        classification.user = 'reviewer2@harvard.edu';
+      } else {
+        classification.user = 'reviewer3@harvard.edu';
+      }
+
       classification.picture_path = 'test_id';
 
       if (req.body.not_lpd_gpd) {
