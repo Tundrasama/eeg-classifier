@@ -222,23 +222,23 @@
         </div>
         <div class="Frequencies">
           <p>Frequency (Hz)</p>
-          <input type="radio" name="frequency" value="&lt;0.5" />
+          <input type="radio" name="frequency" class="frequency" value="&lt;0.5" />
           <label>&lt;0.5</label>
-          <input type="radio" name="frequency" value="0.5" />
+          <input type="radio" name="frequency" class="frequency" value="0.5" />
           <label>0.5</label>
-          <input type="radio" name="frequency" value="1.0" />
+          <input type="radio" name="frequency" class="frequency" value="1.0" />
           <label>1.0</label>
-          <input type="radio" name="frequency" value="1.5" />
+          <input type="radio" name="frequency" class="frequency" value="1.5" />
           <label>1.5</label>
-          <input type="radio" name="frequency" value="2.0" />
+          <input type="radio" name="frequency" class="frequency" value="2.0" />
           <label>2.0</label>
-          <input type="radio" name="frequency" value="2.5" />
+          <input type="radio" name="frequency" class="frequency" value="2.5" />
           <label>2.5</label>
-          <input type="radio" name="frequency" value="3.0" />
+          <input type="radio" name="frequency" class="frequency" value="3.0" />
           <label>3.0</label>
-          <input type="radio" name="frequency" value="3.5" />
+          <input type="radio" name="frequency" class="frequency" value="3.5" />
           <label>3.5</label>
-          <input type="radio" name="frequency" value="&ge;4.0" />
+          <input type="radio" name="frequency" class="frequency" value="&ge;4.0" />
           <label>&ge;4.0</label>
         </div>
 
@@ -271,11 +271,11 @@
           <div class="LPD-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="class_type" value="U/I" />
+              <input type="radio" name="class_type" class="lpd_type_1" value="U/I" />
               U/I</label
             >
             <label>
-              <input type="radio" name="class_type" value="B/I Asym" />
+              <input type="radio" name="class_type" class="lpd_type_2" value="B/I Asym" />
               B/I Asym</label
             >
           </div>
@@ -377,11 +377,11 @@
           <div class="LPD-2-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="opt_class_type" value="U/I" />
+              <input type="radio" name="opt_class_type" class="lpd2_type_1" value="U/I" />
               U/I</label
             >
             <label>
-              <input type="radio" name="opt_class_type" value="B/I Asym" />
+              <input type="radio" name="opt_class_type" class="lpd2_type_2" value="B/I Asym" />
               B/I Asym</label
             >
           </div>
@@ -468,9 +468,94 @@
 /// Need a function to return all controls to a default status
   $(document).ready(function() {
 
+    // Form Validation
+    $("form input[type=submit]").click(function() {
+      $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
+      $(this).attr("clicked", "true");
+    });
 
-        //need to do validation when submit is chosen -- should it be here or in classification.js
-        // using express-validator
+    $( "#classForm" ).submit(function( event ) {
+      var val = $("input[type=submit][clicked=true]").val();
+
+      if (val=="Submit"){
+        // Must have LPD or GPD selected
+        if (($("#LPD-CHECK").prop('checked')==false) && ($('#GPD-CHECK').prop('checked')==false)) {
+          alert('A Classification (LPD/GPD) must be selected');
+          event.preventDefault();
+        }
+
+        // If LPD
+        if ($("#LPD-CHECK").prop('checked')==true) {
+          // make sure a type is selected
+          if (($('.lpd_type_1').is(':checked')==false) && ($('.lpd_type_2').is(':checked')==false)) {
+            alert('An LPD Type must be selected');
+            event.preventDefault();
+          }
+
+          // make sure at least one predominance is selected
+          var LPD_predoms = $('#LPD input:checkbox:checked').map(function() {
+            return $(this).val();
+          }).get();
+          
+          if (LPD_predoms.length==0) {
+            alert('At least one LPD Predominance must be selected');
+            event.preventDefault();
+          }
+
+          // If LPD-2
+          if ($('#LPD2-CHECK').prop('checked')==true) {
+            if (($('.lpd2_type_1').is(':checked')==false) && ($('.lpd2_type_2').is(':checked')==false)) {
+              alert('An LPD2 Type must be selected');
+              event.preventDefault();
+            }
+
+            // make sure at least one predominance is selected
+            var LPD2_predoms = $('#LPD2 input:checkbox:checked').map(function() {
+              return $(this).val();
+            }).get();
+            
+            if (LPD2_predoms.length==0) {
+              alert('At least one LPD2 Predominance must be selected');
+              event.preventDefault();
+            }
+          }
+        }
+
+        // If GPD
+        if ($('#GPD-CHECK').prop('checked')==true) {
+          var GPD_predoms = $('#GPD input:checkbox:checked').map(function() {
+            return $(this).val();
+          }).get();
+
+          if (GPD_predoms.length==0) {
+            alert('At least one Predominance must be selected');
+            event.preventDefault();
+          }
+        }
+
+        // check for a channel
+        var channels_selected = $('.Select-Ind input:checkbox:checked').map(function() {
+          return $(this).val();
+        }).get();
+
+        if (channels_selected.length==0) {
+          alert('At least one channel must be selected');
+          event.preventDefault();
+        }
+
+        //check for a frequency
+        var frequency = $('.Frequencies input:radio:checked').map(function() {
+          return $(this).val();
+        }).get();
+
+        if (frequency.length==0) {
+          alert('A Frequency must be selected')
+          event.preventDefault();
+        }
+      }
+      
+
+    });
 
         $('#select_all').click(function() {
           $('.input-check-channel input').prop('checked',this.checked);
