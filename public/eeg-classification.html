@@ -467,6 +467,17 @@
 // JAVASCRIPT
 /// Need a function to return all controls to a default status
   $(document).ready(function() {
+    // onload need to determine the image to serve
+    // who is the user?
+    // const fs = require('fs');
+
+    const user = 'mwestover@mgh.harvard.edu';
+    // create array of images in directory
+    const imgDir = [];
+
+    // query the file_ids that the current user has seen and remove them from the array of images
+    //  if it persists, could then just remove the next image from the array and keep getting array[0]
+
 
     // Form Validation
     $("form input[type=submit]").click(function() {

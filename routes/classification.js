@@ -169,38 +169,4 @@ router.post(
   }
 );
 
-// router.post(
-//   '/',
-//   [
-//     // verify that a classification has been selected
-//     // names: LPD-CLASSIFICATION, GPD-CLASSIFICATION, LPD2-CLASSIFICATION
-//     //check('LPD-CLASSIFICATION').custom(value => {})
-//     //  if LPD,
-//     // must have at least U/I or B/I
-//     // must have at least 1 predominance
-//     //  if GPD,
-//     // must have at least 1 predominance
-//     //  if LPD-2,
-//     // must have at least U/I or B/I
-//     // must have at least 1 predominance
-//     // Must have at least one Frequency
-//     // Must have at least on Channel
-//   ],
-//   async (req, res) => {
-//     const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res.status(400).json({ errors: errors.array() });
-//     }
-
-//     try {
-//       classification = new Classification({});
-
-//       res.redirect('/');
-//     } catch (err) {
-//       console.error(err.message);
-//       res.status(500).send('Server error');
-//     }
-//   }
-// );
-
 module.exports = router;
