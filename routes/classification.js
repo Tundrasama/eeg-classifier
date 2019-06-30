@@ -5,8 +5,7 @@ const classifications = require('../models/Classification');
 
 //app.get('/', (req, res) => res.send('API Running'));
 router.get('/', async (req, res) => {
-  console.log('GET');
-
+  // console.log('GET');
   try {
     const Classification = await classifications.find().populate();
 
@@ -22,9 +21,6 @@ router.post(
 
   async (req, res) => {
     try {
-      // as long as these values = the same name as the model, should be able to pass into
-      // model -- just unsure about
-
       const classificationFields = req.body;
       console.log(classificationFields);
       classification = new classifications({});

@@ -24,6 +24,8 @@ Classification.find(
     if (err) return err.message;
 
     userImages = classifications.map(class_ => ({
+      // could possibly include the forEach up here
+      // and minimize the code.
       filePath: class_.picture_path
     }));
 

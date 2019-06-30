@@ -21,14 +21,14 @@ body {
   /* overflow-y: hidden;
   overflow-x: hidden; */
   /*grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;*/
-  
+
   grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
   grid-template-rows: 5% 3% 10% 70% 8% 5%;
-  grid-template-areas: 
+  grid-template-areas:
     'Header Header Header Header Header Header Header Header Header Header'
     'LPD-Header LPD-Header LPD-Header LPD-Header GPD-Header GPD-Header LPD2-Header LPD2-Header LPD2-Header LPD2-Header'
-    'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2' 
-    'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images' 
+    'LPD LPD LPD LPD GPD GPD LPD-2 LPD-2 LPD-2 LPD-2'
+    'Select-All Select-Channel Select-Ind Images Images Images Images Images Images Images'
     'Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies Frequencies'
     'Submit Submit Submit Submit Submit Submit Submit Submit Submit Submit';
 
@@ -132,14 +132,14 @@ body {
   grid-area: Select-All;
   text-align: center;
   margin-top: 15px;
-   min-width: 15px;
+  min-width: 15px;
 }
 
 .Select-Channel {
   grid-area: Select-Channel;
   text-align: center;
   margin-top: 15px;
-   min-width: 20px;
+  min-width: 20px;
 }
 
 .input-check-channel input {
@@ -167,7 +167,7 @@ body {
   grid-area: Images;
   text-align: center;
   padding-top: 20px;
-  min-width:650px;
+  min-width: 650px;
   /* margin-left: -300px; */
   /* border-style: groove;
   border-color: black;
@@ -191,13 +191,13 @@ body {
   /*grid-template-columns: 0.5fr 0.5fr 0.5fr;*/
   grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-     'LPD-Type LPD-Predom-ln1 LPD-Predom-ln1 LPD-Predom-ln1' 
-     'LPD-Type LPD-Predom-ln2 LPD-Predom-ln2 LPD-Predom-ln2';
+  grid-template-areas:
+    'LPD-Type LPD-Predom-ln1 LPD-Predom-ln1 LPD-Predom-ln1'
+    'LPD-Type LPD-Predom-ln2 LPD-Predom-ln2 LPD-Predom-ln2';
   grid-area: LPD;
   border-style: groove;
   border-color: rgb(210, 209, 223);
-   min-height:90px;
+  min-height: 90px;
 }
 
 .LPD-Type {
@@ -212,13 +212,13 @@ body {
   grid-area: LPD-Predom-ln1;
   text-align: center;
   margin-left: 45px;
-    min-width: 180px;
+  min-width: 180px;
 }
 
 .LPD-Predom-ln2 {
   grid-area: LPD-Predom-ln2;
   text-align: center;
-   min-width: 200px;
+  min-width: 200px;
 }
 
 .GPD {
@@ -227,14 +227,14 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
   grid-template-rows: 1fr 1fr;
   /*grid-template-areas: 'GPD-Predom-ln1 GPD-Predom-ln1 GPD-Predom-ln1' 'GPD-Predom-ln2 GPD-Predom-ln2 GPD-Predom-ln2';*/
-  grid-template-areas: 
-    'GPD-Predom-ln1 GPD-Predom-ln1' 
+  grid-template-areas:
+    'GPD-Predom-ln1 GPD-Predom-ln1'
     'GPD-Predom-ln2 GPD-Predom-ln2';
   grid-area: GPD;
   border-style: groove;
   border-color: rgb(210, 209, 223);
   min-width: 200px;
-  min-height:90px;
+  min-height: 90px;
 }
 
 .GPD-Predom-ln1 {
@@ -254,13 +254,13 @@ body {
   /*grid-template-columns: 0.5fr 0.5fr 0.5fr;*/
   grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
   grid-template-rows: 1fr 1fr;
- grid-template-areas:
+  grid-template-areas:
     'LPD-2-Type LPD-2-Predom-ln1 LPD-2-Predom-ln1 LPD-2-Predom-ln1'
     'LPD-2-Type LPD-2-Predom-ln2 LPD-2-Predom-ln2 LPD-2-Predom-ln2';
   grid-area: LPD-2;
   border-style: groove;
   border-color: rgb(210, 209, 223);
-  min-height:90px;
+  min-height: 90px;
 }
 
 .LPD-2-Type {
@@ -281,7 +281,7 @@ body {
 .LPD-2-Predom-ln2 {
   grid-area: LPD-2-Predom-ln2;
   text-align: center;
-   min-width: 200px;
+  min-width: 200px;
 }
 
 .LPD-Header {
@@ -315,4 +315,14 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

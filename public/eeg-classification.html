@@ -25,13 +25,13 @@
         <div class="Select-All">
           <p><u>ALL</u></p>
           <!-- <label class="checkbox-container"> -->
-            <input
-              type="checkbox"
-              name="select_all"
-              class="selectall"
-              id="select_all"
-            />
-            <!-- <span class="checkmark"></span>
+          <input
+            type="checkbox"
+            name="select_all"
+            class="selectall"
+            id="select_all"
+          />
+          <!-- <span class="checkmark"></span>
           </label> -->
         </div>
         <div class="Select-Channel">
@@ -71,28 +71,28 @@
               type="checkbox"
               class="channel1"
               name="channel_1"
-              value=true
+              value="true"
             />Fp1-F7
             <br />
             <input
               type="checkbox"
               class="channel1"
               name="channel_2"
-              value=true
+              value="true"
             />F7-T3
             <br />
             <input
               type="checkbox"
               class="channel1"
               name="channel_3"
-              value=true
+              value="true"
             />T3-T5
             <br />
             <input
               type="checkbox"
               class="channel1"
               name="channel_4"
-              value=true
+              value="true"
             />T5-O1
             <br />
             <br />
@@ -102,28 +102,28 @@
               type="checkbox"
               class="channel2"
               name="channel_5"
-              value=true
+              value="true"
             />Fp2-F8
             <br />
             <input
               type="checkbox"
               class="channel2"
               name="channel_6"
-              value=true
+              value="true"
             />F8-T4
             <br />
             <input
               type="checkbox"
               class="channel2"
               name="channel_7"
-              value=true
+              value="true"
             />T4-T6
             <br />
             <input
               type="checkbox"
               class="channel2"
               name="channel_8"
-              value=true
+              value="true"
             />T6-O2
             <br />
             <br />
@@ -133,28 +133,28 @@
               type="checkbox"
               class="channel3"
               name="channel_9"
-              value=true
+              value="true"
             />Fp1-F3
             <br />
             <input
               type="checkbox"
               class="channel3"
               name="channel_10"
-              value=true
+              value="true"
             />F3-C3
             <br />
             <input
               type="checkbox"
               class="channel3"
               name="channel_11"
-              value=true
+              value="true"
             />C3-P3
             <br />
             <input
               type="checkbox"
               class="channel3"
               name="channel_12"
-              value=true
+              value="true"
             />P3-O1
             <br />
             <br />
@@ -164,28 +164,28 @@
               type="checkbox"
               class="channel4"
               name="channel_13"
-              value=true
+              value="true"
             />Fp2-F4
             <br />
             <input
               type="checkbox"
               class="channel4"
               name="channel_14"
-              value=true
+              value="true"
             />F4-C4
             <br />
             <input
               type="checkbox"
               class="channel4"
               name="channel_15"
-              value=true
+              value="true"
             />C4-P4
             <br />
             <input
               type="checkbox"
               class="channel4"
               name="channel_16"
-              value=true
+              value="true"
             />P4-O2
             <br />
             <br />
@@ -195,34 +195,37 @@
               type="checkbox"
               class="channel5"
               name="channel_17"
-              value=true
+              value="true"
             />Fz-Cz
             <br />
             <input
               type="checkbox"
               class="channel5"
               name="channel_18"
-              value=true
+              value="true"
             />Cz-Pz
             <br />
             <br />
           </div>
         </div>
         <div class="Images">
-          
           <!-- may want to constrain the image or adjust the checkboxes to match up with the image -->
           <!-- src="media/eeg-picture.JPG" -->
           <img
             src="media/images/LPD_Sample272_sid927_20140125_180156_011276.mat_bi.png"
             alt="eeg-picture"
-            
             class="currImage"
           />
           <p>Image X of 1500</p>
         </div>
         <div class="Frequencies">
           <p>Frequency (Hz)</p>
-          <input type="radio" name="frequency" class="frequency" value="&lt;0.5" />
+          <input
+            type="radio"
+            name="frequency"
+            class="frequency"
+            value="&lt;0.5"
+          />
           <label>&lt;0.5</label>
           <input type="radio" name="frequency" class="frequency" value="0.5" />
           <label>0.5</label>
@@ -238,49 +241,72 @@
           <label>3.0</label>
           <input type="radio" name="frequency" class="frequency" value="3.5" />
           <label>3.5</label>
-          <input type="radio" name="frequency" class="frequency" value="&ge;4.0" />
+          <input
+            type="radio"
+            name="frequency"
+            class="frequency"
+            value="&ge;4.0"
+          />
           <label>&ge;4.0</label>
         </div>
 
-        <div class="LPD-Header"><u>LPD</u>
+        <div class="LPD-Header">
+          <u>LPD</u>
           <input
-          type="checkbox"
-          class="LPD-CLASSIFICATION"
-          name="classChoice"
-          value="LPD"
-          id="LPD-CHECK"
-        /></div>
-        <div class="GPD-Header"><u>GPD</u>
+            type="checkbox"
+            class="LPD-CLASSIFICATION"
+            name="classChoice"
+            value="LPD"
+            id="LPD-CHECK"
+          />
+        </div>
+        <div class="GPD-Header">
+          <u>GPD</u>
           <input
-          type="checkbox"
-          class="GPD-CLASSIFICATION"
-          name="classChoice"
-          value="GPD"
-          id="GPD-CHECK"
-        /></div>
-        <div class="LPD2-Header"><u>LPD2</u>
+            type="checkbox"
+            class="GPD-CLASSIFICATION"
+            name="classChoice"
+            value="GPD"
+            id="GPD-CHECK"
+          />
+        </div>
+        <div class="LPD2-Header">
+          <u>LPD2</u>
           <input
-          type="checkbox"
-          class="LPD2-CLASSIFICATION"
-          name="opt_classChoice"
-          value="LPD2"
-          id="LPD2-CHECK"
-        /></div>
+            type="checkbox"
+            class="LPD2-CLASSIFICATION"
+            name="opt_classChoice"
+            value="LPD2"
+            id="LPD2-CHECK"
+          />
+        </div>
 
         <div class="LPD" id="LPD">
           <div class="LPD-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="class_type" class="lpd_type_1" value="U/I" />
+              <input
+                type="radio"
+                name="class_type"
+                class="lpd_type_1"
+                value="U/I"
+              />
               U/I</label
             >
             <label>
-              <input type="radio" name="class_type" class="lpd_type_2" value="B/I Asym" />
+              <input
+                type="radio"
+                name="class_type"
+                class="lpd_type_2"
+                value="B/I Asym"
+              />
               B/I Asym</label
             >
           </div>
           <div class="LPD-Predom-ln1">
-              <label><p></p><u>Predominance</u> </p></label>
+            <label
+              ><p><u>Predominance</u></p></label
+            >
             <label>
               <input
                 type="checkbox"
@@ -310,12 +336,7 @@
             >
             <label>
               <!-- should probably exclude from POST -->
-              <input
-                type="checkbox"
-                
-                id="LPD-Predom-Sel-All"
-                value="All"
-              />
+              <input type="checkbox" id="LPD-Predom-Sel-All" value="All" />
               All</label
             >
           </div>
@@ -352,24 +373,18 @@
         </div>
         <div class="GPD" id="GPD">
           <div class="GPD-Predom-ln1">
-              <label><p></p><u>Predominance</u> </p></label>
+            <label
+              ><p><u>Predominance</u></p></label
+            >
           </div>
           <div class="GPD-Predom-ln2">
             <input type="checkbox" name="predom" value="Frontal" />
             <label>Frontal</label>
-            <input
-              type="checkbox"
-              name="predom"
-              value="Occipital"
-            />
+            <input type="checkbox" name="predom" value="Occipital" />
             <label>Occipital</label><br />
             <input type="checkbox" name="predom" value="Midline" />
             <label>Midline</label>
-            <input
-              type="checkbox"
-              name="predom"
-              value="Generalized"
-            />
+            <input type="checkbox" name="predom" value="Generalized" />
             <label>Generalized</label>
           </div>
         </div>
@@ -377,16 +392,28 @@
           <div class="LPD-2-Type">
             <p><u>Type</u></p>
             <label>
-              <input type="radio" name="opt_class_type" class="lpd2_type_1" value="U/I" />
+              <input
+                type="radio"
+                name="opt_class_type"
+                class="lpd2_type_1"
+                value="U/I"
+              />
               U/I</label
             >
             <label>
-              <input type="radio" name="opt_class_type" class="lpd2_type_2" value="B/I Asym" />
+              <input
+                type="radio"
+                name="opt_class_type"
+                class="lpd2_type_2"
+                value="B/I Asym"
+              />
               B/I Asym</label
             >
           </div>
           <div class="LPD-2-Predom-ln1">
-            <label><p></p><u>Predominance</u> </p></label>
+            <label
+              ><p><u>Predominance</u></p></label
+            >
             <label>
               <input
                 type="checkbox"
@@ -455,141 +482,203 @@
           </div>
         </div>
         <div class="Submit">
-          <input type="submit" class="button" name="submit" value="Submit" id="submit">
-          <input type="submit" class="button" name="not_lpd_gpd" value="Not LPD/GPD"></button>
-          <input type="submit" class="button" name="pass" value="Pass"></button>
-          
+          <input
+            type="submit"
+            class="button"
+            name="submit"
+            value="Submit"
+            id="submit"
+          />
+          <input
+            type="submit"
+            class="button"
+            name="not_lpd_gpd"
+            value="Not LPD/GPD"
+          />
+          <input type="submit" class="button" name="pass" value="Pass" />
         </div>
       </div>
-
     </form>
     <script>
-// JAVASCRIPT
-/// Need a function to return all controls to a default status
-  $(document).ready(function() {
-    // onload need to determine the image to serve
-    // who is the user?
-    // const fs = require('fs');
+      // JAVASCRIPT
+      /// Need a function to return all controls to a default status
+      $(document).ready(function() {
+        // onload need to determine the image to serve
+        // who is the user?
 
-    const user = 'mwestover@mgh.harvard.edu';
-    // create array of images in directory
-    const imgDir = [];
+        // create array of images in directory
 
-    // query the file_ids that the current user has seen and remove them from the array of images
-    //  if it persists, could then just remove the next image from the array and keep getting array[0]
+        // query the file_ids that the current user has seen and remove them from the array of images
+        //  if it persists, could then just remove the next image from the array and keep getting array[0]
 
+        // Form Validation
+        $('form input[type=submit]').click(function() {
+          $('input[type=submit]', $(this).parents('form')).removeAttr(
+            'clicked'
+          );
+          $(this).attr('clicked', 'true');
+        });
 
-    // Form Validation
-    $("form input[type=submit]").click(function() {
-      $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
-      $(this).attr("clicked", "true");
-    });
+        $('#classForm').submit(function(event) {
+          var val = $('input[type=submit][clicked=true]').val();
 
-    $( "#classForm" ).submit(function( event ) {
-      var val = $("input[type=submit][clicked=true]").val();
-
-      if (val=="Submit"){
-        // Must have LPD or GPD selected
-        if (($("#LPD-CHECK").prop('checked')==false) && ($('#GPD-CHECK').prop('checked')==false)) {
-          alert('A Classification (LPD/GPD) must be selected');
-          event.preventDefault();
-        }
-
-        // If LPD
-        if ($("#LPD-CHECK").prop('checked')==true) {
-          // make sure a type is selected
-          if (($('.lpd_type_1').is(':checked')==false) && ($('.lpd_type_2').is(':checked')==false)) {
-            alert('An LPD Type must be selected');
-            event.preventDefault();
-          }
-
-          // make sure at least one predominance is selected
-          var LPD_predoms = $('#LPD input:checkbox:checked').map(function() {
-            return $(this).val();
-          }).get();
-          
-          if (LPD_predoms.length==0) {
-            alert('At least one LPD Predominance must be selected');
-            event.preventDefault();
-          }
-
-          // If LPD-2
-          if ($('#LPD2-CHECK').prop('checked')==true) {
-            if (($('.lpd2_type_1').is(':checked')==false) && ($('.lpd2_type_2').is(':checked')==false)) {
-              alert('An LPD2 Type must be selected');
+          if (val == 'Submit') {
+            const validationErrors = [];
+            // Must have LPD or GPD selected
+            if (
+              $('#LPD-CHECK').prop('checked') == false &&
+              $('#GPD-CHECK').prop('checked') == false
+            ) {
+              // alert('A Classification (LPD/GPD) must be selected');
+              validationErrors.push({
+                classificationError:
+                  'A Classification (LPD/GPD) must be selected'
+              });
               event.preventDefault();
             }
 
-            // make sure at least one predominance is selected
-            var LPD2_predoms = $('#LPD2 input:checkbox:checked').map(function() {
-              return $(this).val();
-            }).get();
-            
-            if (LPD2_predoms.length==0) {
-              alert('At least one LPD2 Predominance must be selected');
+            // If LPD
+            if ($('#LPD-CHECK').prop('checked') == true) {
+              // make sure a type is selected
+              if (
+                $('.lpd_type_1').is(':checked') == false &&
+                $('.lpd_type_2').is(':checked') == false
+              ) {
+                // alert('An LPD Type must be selected');
+                validationErrors.push({
+                  LPD1_Type_Error: 'An LPD Type must be selected'
+                });
+                event.preventDefault();
+              }
+
+              // make sure at least one predominance is selected
+              var LPD_predoms = $('#LPD input:checkbox:checked')
+                .map(function() {
+                  return $(this).val();
+                })
+                .get();
+
+              if (LPD_predoms.length == 0) {
+                // alert('At least one LPD Predominance must be selected');
+                validationErrors.push({
+                  LPD1_Predom_Error:
+                    'At least one LPD Predominance must be selected'
+                });
+                event.preventDefault();
+              }
+
+              // If LPD-2
+              if ($('#LPD2-CHECK').prop('checked') == true) {
+                if (
+                  $('.lpd2_type_1').is(':checked') == false &&
+                  $('.lpd2_type_2').is(':checked') == false
+                ) {
+                  // alert('An LPD2 Type must be selected');
+                  validationErrors.push({
+                    LPD2_Type_Error: 'An LPD2 Type must be selected'
+                  });
+                  event.preventDefault();
+                }
+
+                // make sure at least one predominance is selected
+                var LPD2_predoms = $('#LPD2 input:checkbox:checked')
+                  .map(function() {
+                    return $(this).val();
+                  })
+                  .get();
+
+                if (LPD2_predoms.length == 0) {
+                  //alert('At least one LPD2 Predominance must be selected');
+                  validationErrors.push({
+                    LPD2_Predom_Error:
+                      'At least one LPD2 Predominance must be selected'
+                  });
+                  event.preventDefault();
+                }
+              }
+            }
+
+            // If GPD
+            if ($('#GPD-CHECK').prop('checked') == true) {
+              var GPD_predoms = $('#GPD input:checkbox:checked')
+                .map(function() {
+                  return $(this).val();
+                })
+                .get();
+
+              if (GPD_predoms.length == 0) {
+                // alert('At least one Predominance must be selected');
+                validationErrors.push({
+                  GPD_Predom_Error:
+                    'At least one GPD Predominance must be selected'
+                });
+                event.preventDefault();
+              }
+            }
+
+            // check for a channel
+            var channels_selected = $('.Select-Ind input:checkbox:checked')
+              .map(function() {
+                return $(this).val();
+              })
+              .get();
+
+            if (channels_selected.length == 0) {
+              //alert('At least one channel must be selected');
+              validationErrors.push({
+                channelError: 'At least one channel must be selected'
+              });
               event.preventDefault();
             }
+
+            //check for a frequency
+            var frequency = $('.Frequencies input:radio:checked')
+              .map(function() {
+                return $(this).val();
+              })
+              .get();
+
+            if (frequency.length == 0) {
+              // alert('A Frequency must be selected');
+              validationErrors.push({
+                frequencyError: 'A Frequency must be selected'
+              });
+              event.preventDefault();
+            }
+
+            //could clean up
+            alert(JSON.stringify(validationErrors));
           }
-        }
+        });
 
-        // If GPD
-        if ($('#GPD-CHECK').prop('checked')==true) {
-          var GPD_predoms = $('#GPD input:checkbox:checked').map(function() {
-            return $(this).val();
-          }).get();
-
-          if (GPD_predoms.length==0) {
-            alert('At least one Predominance must be selected');
-            event.preventDefault();
-          }
-        }
-
-        // check for a channel
-        var channels_selected = $('.Select-Ind input:checkbox:checked').map(function() {
-          return $(this).val();
-        }).get();
-
-        if (channels_selected.length==0) {
-          alert('At least one channel must be selected');
-          event.preventDefault();
-        }
-
-        //check for a frequency
-        var frequency = $('.Frequencies input:radio:checked').map(function() {
-          return $(this).val();
-        }).get();
-
-        if (frequency.length==0) {
-          alert('A Frequency must be selected')
-          event.preventDefault();
-        }
-      }
-    });
-
-      // Form Functionality
+        // Form Functionality
         $('#select_all').click(function() {
-          $('.input-check-channel input').prop('checked',this.checked);
-          $('.input-check-ind input').prop('checked',this.checked);
+          $('.input-check-channel input').prop('checked', this.checked);
+          $('.input-check-ind input').prop('checked', this.checked);
         });
 
         $('.input-check-channel input').click(function(e) {
           // console.log(e.target.id + ' ' + this.checked);
           // console.log('#checklist' + e.target.id.replace('select_channel_',''));
-          $('#checklist' + e.target.id.replace('select_channel_','') + ' :input').prop('checked',this.checked);
+          $(
+            '#checklist' +
+              e.target.id.replace('select_channel_', '') +
+              ' :input'
+          ).prop('checked', this.checked);
           var selected = [];
           $('.input-check-channel input:checked').each(function() {
-              selected.push($(this).attr('name'));
+            selected.push($(this).attr('name'));
           });
-          if (selected.length==5) {
-            $('#select_all').prop('checked',this.checked);
+          if (selected.length == 5) {
+            $('#select_all').prop('checked', this.checked);
           } else {
-            $('#select_all').prop('checked',false);
+            $('#select_all').prop('checked', false);
           }
         });
 
-    //TODO: can improve below
-      // TODO: Need the All checkbox in predominance sections to selec tother items
-      // haven't added functionality for ind checkboxes to uncheck the all
+        //TODO: can improve below
+        // TODO: Need the All checkbox in predominance sections to selec tother items
+        // haven't added functionality for ind checkboxes to uncheck the all
         $('#LPD-Predom-Sel-All').click(function() {
           $(this.form.elements)
             .filter('.LPD-PREDOM')
@@ -608,51 +697,57 @@
         disableDiv('#LPD2');
         disableControls();
 
-        function disableControls(){
-          $('.Select-All').fadeTo('fast',.49);
-          $('.Select-Channel').fadeTo('fast',.49);
-          $('.Select-Ind').fadeTo('fast',.49);
-          $('.Frequencies').fadeTo('fast',.49);
+        function disableControls() {
+          $('.Select-All').fadeTo('fast', 0.49);
+          $('.Select-Channel').fadeTo('fast', 0.49);
+          $('.Select-Ind').fadeTo('fast', 0.49);
+          $('.Frequencies').fadeTo('fast', 0.49);
 
-          $('.Select-All :input').prop('disabled',true); 
-          $('.Select-Channel :input').prop('disabled',true);
-          $('.Select-Ind :input').prop('disabled',true); 
-          $('.Frequencies :input').prop('disabled',true);  
+          $('.Select-All :input').prop('disabled', true);
+          $('.Select-Channel :input').prop('disabled', true);
+          $('.Select-Ind :input').prop('disabled', true);
+          $('.Frequencies :input').prop('disabled', true);
         }
 
-        function enableControls(){
-          $('.Select-All').fadeTo('fast',1);
-          $('.Select-Channel').fadeTo('fast',1);
-          $('.Select-Ind').fadeTo('fast',1);
-          $('.Frequencies').fadeTo('fast',1);
+        function enableControls() {
+          $('.Select-All').fadeTo('fast', 1);
+          $('.Select-Channel').fadeTo('fast', 1);
+          $('.Select-Ind').fadeTo('fast', 1);
+          $('.Frequencies').fadeTo('fast', 1);
 
-          $('.Select-All :input').prop('disabled',false); 
-          $('.Select-Channel :input').prop('disabled',false);
-          $('.Select-Ind :input').prop('disabled',false); 
-          $('.Frequencies :input').prop('disabled',false); 
+          $('.Select-All :input').prop('disabled', false);
+          $('.Select-Channel :input').prop('disabled', false);
+          $('.Select-Ind :input').prop('disabled', false);
+          $('.Frequencies :input').prop('disabled', false);
         }
 
-    // could disable controls until a selection is made
-    // LPD Classification Checked -- disable GPD and LPD2
-        function disableDiv(ctrl){
-          $(ctrl).fadeTo('fast',.49);
-          document.getElementById(ctrl.replace("#","")+'-CHECK').checked=false;
-          unCheck(ctrl)
+        // could disable controls until a selection is made
+        // LPD Classification Checked -- disable GPD and LPD2
+        function disableDiv(ctrl) {
+          $(ctrl).fadeTo('fast', 0.49);
+          document.getElementById(
+            ctrl.replace('#', '') + '-CHECK'
+          ).checked = false;
+          unCheck(ctrl);
         }
 
-        function unCheck(ctrl){
-          $(ctrl).find(':input').prop({checked:false,disabled:true});
+        function unCheck(ctrl) {
+          $(ctrl)
+            .find(':input')
+            .prop({ checked: false, disabled: true });
         }
 
-        function enableDiv(ctrl){
-          $(ctrl).fadeTo('fast',1);
-          $(ctrl).find(':input').prop('disabled',false);
+        function enableDiv(ctrl) {
+          $(ctrl).fadeTo('fast', 1);
+          $(ctrl)
+            .find(':input')
+            .prop('disabled', false);
         }
 
-        document.getElementById('LPD-CHECK').onclick = function(){
-          enableDiv("#LPD");
-          console.log(this.checked)
-          if (this.checked==false) {
+        document.getElementById('LPD-CHECK').onclick = function() {
+          enableDiv('#LPD');
+          console.log(this.checked);
+          if (this.checked == false) {
             disableDiv('#LPD');
             disableDiv('#LPD2');
             disableControls();
@@ -663,10 +758,10 @@
             disableDiv('#GPD');
             disableDiv('#LPD2');
           }
-        }
-        document.getElementById('GPD-CHECK').onclick = function(){
-          enableDiv("#GPD");
-          if (this.checked==false) {
+        };
+        document.getElementById('GPD-CHECK').onclick = function() {
+          enableDiv('#GPD');
+          if (this.checked == false) {
             disableDiv('#GPD');
             disableControls();
             // enableDiv('#LPD');
@@ -676,39 +771,41 @@
             disableDiv('#LPD');
             disableDiv('#LPD2');
           }
-        }
-        document.getElementById('LPD2-CHECK').onclick = function(){
-          enableDiv("#LPD2");
-          if (this.checked==false) {
+        };
+        document.getElementById('LPD2-CHECK').onclick = function() {
+          enableDiv('#LPD2');
+          if (this.checked == false) {
             // enableDiv('#GPD');
-            disableDiv('#LPD2')
+            disableDiv('#LPD2');
           } else {
             disableDiv('#GPD');
             enableDiv('#LPD');
             enableControls();
-            document.getElementById('LPD-CHECK').checked=true;
+            document.getElementById('LPD-CHECK').checked = true;
             // disableDiv('#LPD');
           }
-        }
+        };
 
-//Hot Keys
+        //Hot Keys
         var down = [];
-        $(document).keydown(function(e) {
+        $(document)
+          .keydown(function(e) {
             down[e.keyCode] = true;
-        }).keyup(function(e) {
+          })
+          .keyup(function(e) {
             if (down[76] && down[50]) {
               //could change to tigger('click')
-                enableDiv('#LPD2')
-                document.getElementById('LPD2-CHECK').checked=true;
+              enableDiv('#LPD2');
+              document.getElementById('LPD2-CHECK').checked = true;
             }
             down[e.keyCode] = false;
-        });
+          });
 
-        var chosenChannel = ''
+        var chosenChannel = '';
 
         document.onkeydown = function(e) {
           // select all?
-          if (e.ctrlKey && e.shiftKey && e.which==65) {
+          if (e.ctrlKey && e.shiftKey && e.which == 65) {
             $('#select_all').trigger('click');
             e.preventDefault();
           }
@@ -719,17 +816,19 @@
           }
 
           // enter channel
-          if (e.shiftKey && e.which >= 49 && e.which <=53) {
-            chosenChannel = "#checklist" + (e.which-48).toString();
+          if (e.shiftKey && e.which >= 49 && e.which <= 53) {
+            chosenChannel = '#checklist' + (e.which - 48).toString();
             e.preventDefault();
           }
 
           // delete channel
-          if (e.altKey && e.which >= 49 && e.which <=53) {
+          if (e.altKey && e.which >= 49 && e.which <= 53) {
             if (chosenChannel) {
-              $(chosenChannel + ' input').eq(e.key-1).trigger('click');
+              $(chosenChannel + ' input')
+                .eq(e.key - 1)
+                .trigger('click');
             } else {
-              alert("You must first select a channel with SHIFT + CHAIN #");
+              alert('You must first select a channel with SHIFT + CHAIN #');
             }
             e.preventDefault();
           }
@@ -739,13 +838,13 @@
               // SELECT/DE-SELECT LPD
               case 76:
                 // alert('l');
-                if (document.getElementById('LPD-CHECK').checked==true) {
+                if (document.getElementById('LPD-CHECK').checked == true) {
                   disableDiv('#LPD');
                   disableDiv('#LPD2');
                   disableDiv('#GPD');
                   disableControls();
                 } else {
-                  document.getElementById('LPD-CHECK').checked=true;
+                  document.getElementById('LPD-CHECK').checked = true;
                   enableDiv('#LPD');
                   disableDiv('#GPD');
                   enableControls();
@@ -755,13 +854,13 @@
               // SELECT/DE-SELECT GPD
               case 71:
                 // alert('g');
-                if (document.getElementById('GPD-CHECK').checked==true) {
+                if (document.getElementById('GPD-CHECK').checked == true) {
                   disableDiv('#LPD');
                   disableDiv('#LPD2');
                   disableDiv('#GPD');
                   disableControls();
                 } else {
-                  document.getElementById('GPD-CHECK').checked=true;
+                  document.getElementById('GPD-CHECK').checked = true;
                   disableDiv('#LPD');
                   disableDiv('#LPD2');
                   enableDiv('#GPD');
@@ -803,10 +902,10 @@
               case 52:
                 // alert('>=4.0');
                 $('input[name=frequency]:eq(8)').prop('checked', true);
-              }
+            }
           }
-        }
-      })
+        };
+      });
     </script>
   </body>
 </html>
