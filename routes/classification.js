@@ -32,9 +32,9 @@ router.post(
       const randNum = Math.floor(Math.random() * 5);
 
       if (randNum == 1) {
-        classification.user = 'chris.mcgraw@harvard.edu';
+        classification.user = 'cmmcgraw@mgh.harvard.edu';
       } else if (randNum == 4) {
-        classification.user = 'reviewer2@harvard.edu';
+        classification.user = 'mwestover@mgh.harvard.edu';
       } else {
         classification.user = 'reviewer3@harvard.edu';
       }
@@ -66,57 +66,93 @@ router.post(
         classification.frequency = classificationFields.frequency;
 
         classification.channel_1 = {
+          name: 'Fp1-F7',
+          group: 'chain-1',
           selected: classificationFields.channel_1 || false
         };
         classification.channel_2 = {
+          name: 'F7-T3',
+          group: 'chain-1',
           selected: classificationFields.channel_2 || false
         };
         classification.channel_3 = {
+          name: 'T3-T5',
+          group: 'chain-1',
           selected: classificationFields.channel_3 || false
         };
         classification.channel_4 = {
+          name: 'T5-01',
+          group: 'chain-1',
           selected: classificationFields.channel_4 || false
         };
         classification.channel_5 = {
+          name: 'Fp2-F8',
+          group: 'chain-2',
           selected: classificationFields.channel_5 || false
         };
         classification.channel_6 = {
+          name: 'F8-T4',
+          group: 'chain-2',
           selected: classificationFields.channel_6 || false
         };
         classification.channel_7 = {
+          name: 'T4-T6',
+          group: 'chain-2',
           selected: classificationFields.channel_7 || false
         };
         classification.channel_8 = {
+          name: 'T6-O2',
+          group: 'chain-2',
           selected: classificationFields.channel_8 || false
         };
         classification.channel_9 = {
+          name: 'Fp1-F3',
+          group: 'chain-3',
           selected: classificationFields.channel_9 || false
         };
         classification.channel_10 = {
+          name: 'F3-C3',
+          group: 'chain-3',
           selected: classificationFields.channel_10 || false
         };
         classification.channel_11 = {
+          name: 'C3-P3',
+          group: 'chain-3',
           selected: classificationFields.channel_11 || false
         };
         classification.channel_12 = {
+          name: 'P3-O1',
+          group: 'chain-3',
           selected: classificationFields.channel_12 || false
         };
         classification.channel_13 = {
+          name: 'Fp2-F4',
+          group: 'chain-4',
           selected: classificationFields.channel_13 || false
         };
         classification.channel_14 = {
+          name: 'F4-C4',
+          group: 'chain-4',
           selected: classificationFields.channel_14 || false
         };
         classification.channel_15 = {
+          name: 'C4-P4',
+          group: 'chain-4',
           selected: classificationFields.channel_15 || false
         };
         classification.channel_16 = {
+          name: 'P4-O2',
+          group: 'chain-4',
           selected: classificationFields.channel_16 || false
         };
         classification.channel_17 = {
+          name: 'Fz-Cz',
+          group: 'chain-5',
           selected: classificationFields.channel_17 || false
         };
         classification.channel_18 = {
+          name: 'Cz-Pz',
+          group: 'chain-5',
           selected: classificationFields.channel_18 || false
         };
       }
