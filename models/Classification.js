@@ -279,6 +279,9 @@ const ClassificationSchema = new db.Schema({
   },
   frequency: {
     type: String
+  },
+  channelsSelected: {
+    type: [String]
   }
 });
 

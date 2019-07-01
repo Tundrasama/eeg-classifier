@@ -22,6 +22,7 @@ router.post(
   async (req, res) => {
     try {
       const classificationFields = req.body;
+      const channels = [];
       console.log(classificationFields);
       classification = new classifications({});
 
@@ -60,6 +61,63 @@ router.post(
 
         classification.montage = classificationFields.montage || 'bipolar';
         classification.frequency = classificationFields.frequency;
+
+        // get channel names present
+        //sure there is a better way to do this.
+        if (classificationFields.channel_1) {
+          channels.push('Fp1-F7');
+        }
+        if (classificationFields.channel_2) {
+          channels.push('F7-T3');
+        }
+        if (classificationFields.channel_3) {
+          channels.push('T3-T5');
+        }
+        if (classificationFields.channel_4) {
+          channels.push('T5-01');
+        }
+        if (classificationFields.channel_5) {
+          channels.push('Fp2-F8');
+        }
+        if (classificationFields.channel_6) {
+          channels.push('F8-T4');
+        }
+        if (classificationFields.channel_7) {
+          channels.push('T4-T6');
+        }
+        if (classificationFields.channel_8) {
+          channels.push('T6-O2');
+        }
+        if (classificationFields.channel_9) {
+          channels.push('Fp1-F3');
+        }
+        if (classificationFields.channel_10) {
+          channels.push('F3-C3');
+        }
+        if (classificationFields.channel_11) {
+          channels.push('C3-P3');
+        }
+        if (classificationFields.channel_12) {
+          channels.push('P3-O1');
+        }
+        if (classificationFields.channel_13) {
+          channels.push('Fp2-F4');
+        }
+        if (classificationFields.channel_14) {
+          channels.push('F4-C4');
+        }
+        if (classificationFields.channel_15) {
+          channels.push('C4-P4');
+        }
+        if (classificationFields.channel_16) {
+          channels.push('P4-O2');
+        }
+        if (classificationFields.channel_17) {
+          channels.push('Fz-Cz');
+        }
+        if (classificationFields.channel_18) {
+          channels.push('Cz-Pz');
+        }
 
         classification.channel_1 = {
           name: 'Fp1-F7',
@@ -151,11 +209,14 @@ router.post(
           group: 'chain-5',
           selected: classificationFields.channel_18 || false
         };
+        classification.channelsSelected = channels;
       }
       console.log(classification);
       // commented out below while testing
       await classification.save();
       console.log('Saved...');
+
+      console.log('Channels: ' + channels);
 
       res.redirect('/');
     } catch (err) {

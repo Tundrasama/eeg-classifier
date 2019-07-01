@@ -289,18 +289,18 @@
                 type="radio"
                 name="class_type"
                 class="lpd_type_1"
-                value="U/I"
+                value="U/L"
               />
-              U/I</label
+              U/L</label
             >
             <label>
               <input
                 type="radio"
                 name="class_type"
                 class="lpd_type_2"
-                value="B/I Asym"
+                value="B/L Asym"
               />
-              B/I Asym</label
+              B/L Asym</label
             >
           </div>
           <div class="LPD-Predom-ln1">
@@ -396,18 +396,18 @@
                 type="radio"
                 name="opt_class_type"
                 class="lpd2_type_1"
-                value="U/I"
+                value="U/L"
               />
-              U/I</label
+              U/L</label
             >
             <label>
               <input
                 type="radio"
                 name="opt_class_type"
                 class="lpd2_type_2"
-                value="B/I Asym"
+                value="B/L Asym"
               />
-              B/I Asym</label
+              B/L Asym</label
             >
           </div>
           <div class="LPD-2-Predom-ln1">
@@ -647,7 +647,9 @@
             }
 
             //could clean up
-            alert(JSON.stringify(validationErrors));
+            if (validationErrors.length > 0) {
+              alert(JSON.stringify(validationErrors));
+            }
           }
         });
 
