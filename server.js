@@ -66,27 +66,36 @@ app.post('/', (req, res) => {
     //   });
     // });
 
-    imageList = [];
-    imageItems = images.userImages(userEmail);
-    imageItems.then(function(result) {
-      imageList = result.map(function(image) {
-        return image.picture_path;
+    try {
+      imageList = [];
+      imageItems = images.userImages(userEmail);
+      imageItems.then(function(result) {
+        imageList = result.map(function(image) {
+          return image.picture_path;
+        });
+        process.env.USER_CLASSIFICATIONS = imageList.length;
+        console.log('Image List: ' + imageList);
+        nextIMG = images.nextImage(imageList);
+        nextIMG.then(function(result) {
+          if (result !== null) {
+            nextImage = result.picture_path;
+            console.log('Next image: ' + nextImage);
+            process.env.NEXT_IMAGE = nextImage;
+            process.env.NEXT_IMAGE = process.env.NEXT_IMAGE.replace(/[']/g, '');
+            console.log(
+              user +
+                ' has logged in... First image to serve: /media/images/' +
+                process.env.NEXT_IMAGE.replace(/[']/g, '')
+            );
+            res.redirect('eeg-classification');
+          } else {
+            res.json({ message: 'All available images have been classified.' });
+          }
+        });
       });
-      process.env.USER_CLASSIFICATIONS = imageList.length;
-      console.log('Image List: ' + imageList);
-      nextIMG = images.nextImage(imageList);
-      nextIMG.then(function(result) {
-        nextImage = result.picture_path;
-        console.log('Next image: ' + nextImage);
-        process.env.NEXT_IMAGE = nextImage;
-        console.log(
-          user +
-            ' has logged in... First image to serve: /media/images/' +
-            process.env.NEXT_IMAGE.replace(/[']/g, '')
-        );
-        res.redirect('eeg-classification');
-      });
-    });
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 });
 

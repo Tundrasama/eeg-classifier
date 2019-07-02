@@ -36,15 +36,18 @@ router.post('/', async (req, res) => {
   try {
     const classificationFields = req.body;
     const channels = [];
+    var userEmail;
     console.log(classificationFields);
     classification = new classifications({});
     console.log(process.env.USER);
     switch (process.env.USER) {
       case 'Chris':
         classification.user = 'cmmcgraw@mgh.harvard.edu';
+        userEmail = classification.user;
         break;
       case 'Brandon':
         classification.user = 'mwestover@mgh.harvard.edu';
+        userEmail = classification.user;
     }
 
     // const randNum = Math.floor(Math.random() * 5);
@@ -171,15 +174,19 @@ router.post('/', async (req, res) => {
       console.log('Image List: ' + imageList);
       nextIMG = images.nextImage(imageList);
       nextIMG.then(function(result) {
-        nextImage = result.picture_path;
-        console.log('Next image: ' + nextImage);
-        process.env.NEXT_IMAGE = nextImage;
-        console.log(
-          user +
-            ' has logged in... First image to serve: /media/images/' +
-            process.env.NEXT_IMAGE.replace(/[']/g, '')
-        );
-        res.redirect('eeg-classification');
+        if (result.picture_path) {
+          nextImage = result.picture_path;
+          console.log('Next image: ' + nextImage);
+          process.env.NEXT_IMAGE = nextImage;
+          console.log(
+            userEmail +
+              ' has logged in... First image to serve: /media/images/' +
+              process.env.NEXT_IMAGE.replace(/[']/g, '')
+          );
+          res.redirect('eeg-classification');
+        } else {
+          res.json({ message: 'All images available have been classified.' });
+        }
       });
     });
   } catch (err) {
