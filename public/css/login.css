@@ -1,0 +1,31 @@
+body {
+  background: rgb(121, 170, 211);
+  color: #fff;
+}
+
+.Header {
+  grid-area: Header;
+  text-align: center;
+  background-color: rgba(60, 60, 202, 0.493);
+}
+
+.login-container {
+  align-content: center;
+  display: block;
+  border-style: groove;
+  border-color: white;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.container {
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}

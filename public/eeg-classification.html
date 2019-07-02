@@ -5,511 +5,582 @@
     <title>EEG Classifier</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="css/newstyle.css" />
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   </head>
   <body>
-    <form action="/eeg-classification" method="POST" id="classForm">
-      <div class="grid-container">
-        <div class="Header">
-          <p>EEG Classifier</p>
-        </div>
-        <!-- <div class="Montage">
+    <form
+      action="/eeg-classification"
+      method="POST"
+      class="classForm"
+      id="classForm"
+    >
+        <div class="grid-container">
+          <div class="Header">
+            <p>EEG Classifier</p>
+          </div>
+          <!-- <div class="Montage">
           <p>Montage</p>
           <input type="radio" name="montage" value="bipolar" />
           <label>Bipolar</label>
           <input type="radio" name="montage" value="average" />
           <label>Average</label>
         </div> -->
-        <!-- <div class="Pass">
+          <!-- <div class="Pass">
           <p>Pass</p>
         </div> -->
-        <div class="Select-All">
-          <p><u>ALL</u></p>
-          <!-- <label class="checkbox-container"> -->
-          <input
-            type="checkbox"
-            name="select_all"
-            class="selectall"
-            id="select_all"
-          />
-          <!-- <span class="checkmark"></span>
+          <div class="Select-All">
+            <p><u>ALL</u></p>
+            <!-- <label class="checkbox-container"> -->
+            <input
+              type="checkbox"
+              name="select_all"
+              class="selectall"
+              id="select_all"
+            />
+            <!-- <span class="checkmark"></span>
           </label> -->
-        </div>
-        <div class="Select-Channel">
-          <p><u>CHAIN</u></p>
-          <div class="input-check-channel">
-            <input
-              type="checkbox"
-              name="channel_1_select_all"
-              id="select_channel_1"
-            /><br />
-            <input
-              type="checkbox"
-              name="channel_2_select_all"
-              id="select_channel_2"
-            /><br />
-            <input
-              type="checkbox"
-              name="channel_3_select_all"
-              id="select_channel_3"
-            /><br />
-            <input
-              type="checkbox"
-              name="channel_4_select_all"
-              id="select_channel_4"
-            /><br />
-            <input
-              type="checkbox"
-              name="channel_5_select_all"
-              id="select_channel_5"
-            /><br />
           </div>
-        </div>
-        <div class="Select-Ind">
-          <p style="text-align: center;"><u>IND</u></p>
-          <div class="input-check-ind" id="checklist1">
-            <input
-              type="checkbox"
-              class="channel1"
-              name="channel_1"
-              value="true"
-            />Fp1-F7
-            <br />
-            <input
-              type="checkbox"
-              class="channel1"
-              name="channel_2"
-              value="true"
-            />F7-T3
-            <br />
-            <input
-              type="checkbox"
-              class="channel1"
-              name="channel_3"
-              value="true"
-            />T3-T5
-            <br />
-            <input
-              type="checkbox"
-              class="channel1"
-              name="channel_4"
-              value="true"
-            />T5-O1
-            <br />
-            <br />
-          </div>
-          <div class="input-check-ind" id="checklist2">
-            <input
-              type="checkbox"
-              class="channel2"
-              name="channel_5"
-              value="true"
-            />Fp2-F8
-            <br />
-            <input
-              type="checkbox"
-              class="channel2"
-              name="channel_6"
-              value="true"
-            />F8-T4
-            <br />
-            <input
-              type="checkbox"
-              class="channel2"
-              name="channel_7"
-              value="true"
-            />T4-T6
-            <br />
-            <input
-              type="checkbox"
-              class="channel2"
-              name="channel_8"
-              value="true"
-            />T6-O2
-            <br />
-            <br />
-          </div>
-          <div class="input-check-ind" id="checklist3">
-            <input
-              type="checkbox"
-              class="channel3"
-              name="channel_9"
-              value="true"
-            />Fp1-F3
-            <br />
-            <input
-              type="checkbox"
-              class="channel3"
-              name="channel_10"
-              value="true"
-            />F3-C3
-            <br />
-            <input
-              type="checkbox"
-              class="channel3"
-              name="channel_11"
-              value="true"
-            />C3-P3
-            <br />
-            <input
-              type="checkbox"
-              class="channel3"
-              name="channel_12"
-              value="true"
-            />P3-O1
-            <br />
-            <br />
-          </div>
-          <div class="input-check-ind" id="checklist4">
-            <input
-              type="checkbox"
-              class="channel4"
-              name="channel_13"
-              value="true"
-            />Fp2-F4
-            <br />
-            <input
-              type="checkbox"
-              class="channel4"
-              name="channel_14"
-              value="true"
-            />F4-C4
-            <br />
-            <input
-              type="checkbox"
-              class="channel4"
-              name="channel_15"
-              value="true"
-            />C4-P4
-            <br />
-            <input
-              type="checkbox"
-              class="channel4"
-              name="channel_16"
-              value="true"
-            />P4-O2
-            <br />
-            <br />
-          </div>
-          <div class="input-check-ind" id="checklist5">
-            <input
-              type="checkbox"
-              class="channel5"
-              name="channel_17"
-              value="true"
-            />Fz-Cz
-            <br />
-            <input
-              type="checkbox"
-              class="channel5"
-              name="channel_18"
-              value="true"
-            />Cz-Pz
-            <br />
-            <br />
-          </div>
-        </div>
-        <div class="Images">
-          <!-- may want to constrain the image or adjust the checkboxes to match up with the image -->
-          <!-- src="media/eeg-picture.JPG" -->
-          <img
-            src="media/images/LPD_Sample272_sid927_20140125_180156_011276.mat_bi.png"
-            alt="eeg-picture"
-            class="currImage"
-          />
-          <p>Image X of 1500</p>
-        </div>
-        <div class="Frequencies">
-          <p>Frequency (Hz)</p>
-          <input
-            type="radio"
-            name="frequency"
-            class="frequency"
-            value="&lt;0.5"
-          />
-          <label>&lt;0.5</label>
-          <input type="radio" name="frequency" class="frequency" value="0.5" />
-          <label>0.5</label>
-          <input type="radio" name="frequency" class="frequency" value="1.0" />
-          <label>1.0</label>
-          <input type="radio" name="frequency" class="frequency" value="1.5" />
-          <label>1.5</label>
-          <input type="radio" name="frequency" class="frequency" value="2.0" />
-          <label>2.0</label>
-          <input type="radio" name="frequency" class="frequency" value="2.5" />
-          <label>2.5</label>
-          <input type="radio" name="frequency" class="frequency" value="3.0" />
-          <label>3.0</label>
-          <input type="radio" name="frequency" class="frequency" value="3.5" />
-          <label>3.5</label>
-          <input
-            type="radio"
-            name="frequency"
-            class="frequency"
-            value="&ge;4.0"
-          />
-          <label>&ge;4.0</label>
-        </div>
-
-        <div class="LPD-Header">
-          <u>LPD</u>
-          <input
-            type="checkbox"
-            class="LPD-CLASSIFICATION"
-            name="classChoice"
-            value="LPD"
-            id="LPD-CHECK"
-          />
-        </div>
-        <div class="GPD-Header">
-          <u>GPD</u>
-          <input
-            type="checkbox"
-            class="GPD-CLASSIFICATION"
-            name="classChoice"
-            value="GPD"
-            id="GPD-CHECK"
-          />
-        </div>
-        <div class="LPD2-Header">
-          <u>LPD2</u>
-          <input
-            type="checkbox"
-            class="LPD2-CLASSIFICATION"
-            name="opt_classChoice"
-            value="LPD2"
-            id="LPD2-CHECK"
-          />
-        </div>
-
-        <div class="LPD" id="LPD">
-          <div class="LPD-Type">
-            <p><u>Type</u></p>
-            <label>
-              <input
-                type="radio"
-                name="class_type"
-                class="lpd_type_1"
-                value="U/L"
-              />
-              U/L</label
-            >
-            <label>
-              <input
-                type="radio"
-                name="class_type"
-                class="lpd_type_2"
-                value="B/L Asym"
-              />
-              B/L Asym</label
-            >
-          </div>
-          <div class="LPD-Predom-ln1">
-            <label
-              ><p><u>Predominance</u></p></label
-            >
-            <label>
+          <div class="Select-Channel">
+            <p><u>CHAIN</u></p>
+            <div class="input-check-channel">
               <input
                 type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="L"
-              />
-              L</label
-            >
-            <label>
+                name="channel_1_select_all"
+                id="select_channel_1"
+              /><br />
               <input
                 type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="F"
-              />
-              F</label
-            >
-            <label>
+                name="channel_2_select_all"
+                id="select_channel_2"
+              /><br />
               <input
                 type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="P"
-              />
-              P</label
-            >
-            <label>
-              <!-- should probably exclude from POST -->
-              <input type="checkbox" id="LPD-Predom-Sel-All" value="All" />
-              All</label
-            >
+                name="channel_3_select_all"
+                id="select_channel_3"
+              /><br />
+              <input
+                type="checkbox"
+                name="channel_4_select_all"
+                id="select_channel_4"
+              /><br />
+              <input
+                type="checkbox"
+                name="channel_5_select_all"
+                id="select_channel_5"
+              /><br />
+            </div>
+          </div>
+          <div class="Select-Ind">
+            <p style="text-align: center;"><u>IND</u></p>
+            <div class="input-check-ind" id="checklist1">
+              <input
+                type="checkbox"
+                class="channel1"
+                name="channel_1"
+                value="true"
+              />Fp1-F7
+              <br />
+              <input
+                type="checkbox"
+                class="channel1"
+                name="channel_2"
+                value="true"
+              />F7-T3
+              <br />
+              <input
+                type="checkbox"
+                class="channel1"
+                name="channel_3"
+                value="true"
+              />T3-T5
+              <br />
+              <input
+                type="checkbox"
+                class="channel1"
+                name="channel_4"
+                value="true"
+              />T5-O1
+              <br />
+              <br />
+            </div>
+            <div class="input-check-ind" id="checklist2">
+              <input
+                type="checkbox"
+                class="channel2"
+                name="channel_5"
+                value="true"
+              />Fp2-F8
+              <br />
+              <input
+                type="checkbox"
+                class="channel2"
+                name="channel_6"
+                value="true"
+              />F8-T4
+              <br />
+              <input
+                type="checkbox"
+                class="channel2"
+                name="channel_7"
+                value="true"
+              />T4-T6
+              <br />
+              <input
+                type="checkbox"
+                class="channel2"
+                name="channel_8"
+                value="true"
+              />T6-O2
+              <br />
+              <br />
+            </div>
+            <div class="input-check-ind" id="checklist3">
+              <input
+                type="checkbox"
+                class="channel3"
+                name="channel_9"
+                value="true"
+              />Fp1-F3
+              <br />
+              <input
+                type="checkbox"
+                class="channel3"
+                name="channel_10"
+                value="true"
+              />F3-C3
+              <br />
+              <input
+                type="checkbox"
+                class="channel3"
+                name="channel_11"
+                value="true"
+              />C3-P3
+              <br />
+              <input
+                type="checkbox"
+                class="channel3"
+                name="channel_12"
+                value="true"
+              />P3-O1
+              <br />
+              <br />
+            </div>
+            <div class="input-check-ind" id="checklist4">
+              <input
+                type="checkbox"
+                class="channel4"
+                name="channel_13"
+                value="true"
+              />Fp2-F4
+              <br />
+              <input
+                type="checkbox"
+                class="channel4"
+                name="channel_14"
+                value="true"
+              />F4-C4
+              <br />
+              <input
+                type="checkbox"
+                class="channel4"
+                name="channel_15"
+                value="true"
+              />C4-P4
+              <br />
+              <input
+                type="checkbox"
+                class="channel4"
+                name="channel_16"
+                value="true"
+              />P4-O2
+              <br />
+              <br />
+            </div>
+            <div class="input-check-ind" id="checklist5">
+              <input
+                type="checkbox"
+                class="channel5"
+                name="channel_17"
+                value="true"
+              />Fz-Cz
+              <br />
+              <input
+                type="checkbox"
+                class="channel5"
+                name="channel_18"
+                value="true"
+              />Cz-Pz
+              <br />
+              <br />
+            </div>
+          </div>
+          <div class="Images">
+            <!-- may want to constrain the image or adjust the checkboxes to match up with the image -->
+            <!-- src="media/eeg-picture.JPG" -->
+            <img
+              src="media/images/LPD_Sample273_sid927_20140125_180156_011276.mat_bi.png"
+              alt="eeg-picture"
+              class="currImage"
+              id="currImage"
+            />
+            <p>Image X of 1500</p>
+          </div>
+          <div class="Frequencies">
+            <p>Frequency (Hz)</p>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="&lt;0.5"
+            />
+            <label>&lt;0.5</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="0.5"
+            />
+            <label>0.5</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="1.0"
+            />
+            <label>1.0</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="1.5"
+            />
+            <label>1.5</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="2.0"
+            />
+            <label>2.0</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="2.5"
+            />
+            <label>2.5</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="3.0"
+            />
+            <label>3.0</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="3.5"
+            />
+            <label>3.5</label>
+            <input
+              type="radio"
+              name="frequency"
+              class="frequency"
+              value="&ge;4.0"
+            />
+            <label>&ge;4.0</label>
           </div>
 
-          <div class="LPD-Predom-ln2">
-            <label>
-              <input
-                type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="R"
-              />
-              R</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="T"
-              />
-              T</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD-PREDOM"
-                name="predom"
-                value="O"
-              />
-              O</label
-            >
+          <div class="LPD-Header">
+            <u>LPD</u>
+            <input
+              type="checkbox"
+              class="LPD-CLASSIFICATION"
+              name="classChoice"
+              value="LPD"
+              id="LPD-CHECK"
+            />
           </div>
-        </div>
-        <div class="GPD" id="GPD">
-          <div class="GPD-Predom-ln1">
-            <label
-              ><p><u>Predominance</u></p></label
-            >
+          <div class="GPD-Header">
+            <u>GPD</u>
+            <input
+              type="checkbox"
+              class="GPD-CLASSIFICATION"
+              name="classChoice"
+              value="GPD"
+              id="GPD-CHECK"
+            />
           </div>
-          <div class="GPD-Predom-ln2">
-            <input type="checkbox" name="predom" value="Frontal" />
-            <label>Frontal</label>
-            <input type="checkbox" name="predom" value="Occipital" />
-            <label>Occipital</label><br />
-            <input type="checkbox" name="predom" value="Midline" />
-            <label>Midline</label>
-            <input type="checkbox" name="predom" value="Generalized" />
-            <label>Generalized</label>
+          <div class="LPD2-Header">
+            <u>LPD2</u>
+            <input
+              type="checkbox"
+              class="LPD2-CLASSIFICATION"
+              name="opt_classChoice"
+              value="LPD2"
+              id="LPD2-CHECK"
+            />
           </div>
-        </div>
-        <div class="LPD2" id="LPD2">
-          <div class="LPD-2-Type">
-            <p><u>Type</u></p>
-            <label>
-              <input
-                type="radio"
-                name="opt_class_type"
-                class="lpd2_type_1"
-                value="U/L"
-              />
-              U/L</label
-            >
-            <label>
-              <input
-                type="radio"
-                name="opt_class_type"
-                class="lpd2_type_2"
-                value="B/L Asym"
-              />
-              B/L Asym</label
-            >
+
+          <div class="LPD" id="LPD">
+            <div class="LPD-Type">
+              <p><u>Type</u></p>
+              <label>
+                <input
+                  type="radio"
+                  name="class_type"
+                  class="lpd_type_1"
+                  value="U/L"
+                />
+                U/L</label
+              >
+              <label>
+                <input
+                  type="radio"
+                  name="class_type"
+                  class="lpd_type_2"
+                  value="B/L Asym"
+                />
+                B/L Asym</label
+              >
+            </div>
+            <div class="LPD-Predom-ln1">
+              <label
+                ><p><u>Predominance</u></p></label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="L"
+                />
+                L</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="F"
+                />
+                F</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="P"
+                />
+                P</label
+              >
+              <label>
+                <!-- should probably exclude from POST -->
+                <input type="checkbox" id="LPD-Predom-Sel-All" value="All" />
+                All</label
+              >
+            </div>
+
+            <div class="LPD-Predom-ln2">
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="R"
+                />
+                R</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="T"
+                />
+                T</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD-PREDOM"
+                  name="predom"
+                  value="O"
+                />
+                O</label
+              >
+            </div>
           </div>
-          <div class="LPD-2-Predom-ln1">
-            <label
-              ><p><u>Predominance</u></p></label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="L"
-              />
-              L</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="F"
-              />
-              F</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="P"
-              />
-              P</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                name="opt_predom"
-                id="LPD2-Predom-Sel-All"
-                value="All"
-              />
-              All</label
-            >
+          <div class="GPD" id="GPD">
+            <div class="GPD-Predom-ln1">
+              <label
+                ><p><u>Predominance</u></p></label
+              >
+            </div>
+            <div class="GPD-Predom-ln2">
+              <input type="checkbox" name="predom" value="Frontal" />
+              <label>Frontal</label>
+              <input type="checkbox" name="predom" value="Occipital" />
+              <label>Occipital</label><br />
+              <input type="checkbox" name="predom" value="Midline" />
+              <label>Midline</label>
+              <input type="checkbox" name="predom" value="Generalized" />
+              <label>Generalized</label>
+            </div>
           </div>
-          <div class="LPD-2-Predom-ln2">
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="R"
-              />
-              R</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="T"
-              />
-              T</label
-            >
-            <label>
-              <input
-                type="checkbox"
-                class="LPD2-PREDOM"
-                name="opt_predom"
-                value="O"
-              />
-              O</label
-            >
+          <div class="LPD2" id="LPD2">
+            <div class="LPD-2-Type">
+              <p><u>Type</u></p>
+              <label>
+                <input
+                  type="radio"
+                  name="opt_class_type"
+                  class="lpd2_type_1"
+                  value="U/L"
+                />
+                U/L</label
+              >
+              <label>
+                <input
+                  type="radio"
+                  name="opt_class_type"
+                  class="lpd2_type_2"
+                  value="B/L Asym"
+                />
+                B/L Asym</label
+              >
+            </div>
+            <div class="LPD-2-Predom-ln1">
+              <label
+                ><p><u>Predominance</u></p></label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="L"
+                />
+                L</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="F"
+                />
+                F</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="P"
+                />
+                P</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  name="opt_predom"
+                  id="LPD2-Predom-Sel-All"
+                  value="All"
+                />
+                All</label
+              >
+            </div>
+            <div class="LPD-2-Predom-ln2">
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="R"
+                />
+                R</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="T"
+                />
+                T</label
+              >
+              <label>
+                <input
+                  type="checkbox"
+                  class="LPD2-PREDOM"
+                  name="opt_predom"
+                  value="O"
+                />
+                O</label
+              >
+            </div>
           </div>
-        </div>
-        <div class="Submit">
-          <input
-            type="submit"
-            class="button"
-            name="submit"
-            value="Submit"
-            id="submit"
-          />
-          <input
-            type="submit"
-            class="button"
-            name="not_lpd_gpd"
-            value="Not LPD/GPD"
-          />
-          <input type="submit" class="button" name="pass" value="Pass" />
+          <div class="Submit">
+            <input
+              type="submit"
+              class="button"
+              name="submit"
+              value="Submit"
+              id="submit"
+            />
+            <input
+              type="submit"
+              class="button"
+              name="not_lpd_gpd"
+              value="Not LPD/GPD"
+            />
+            <input type="submit" class="button" name="pass" value="Pass" />
+          </div>
         </div>
       </div>
+      </div>
     </form>
+
     <script>
       // JAVASCRIPT
       /// Need a function to return all controls to a default status
       $(document).ready(function() {
         // onload need to determine the image to serve
         // who is the user?
-
         // create array of images in directory
+        // var user = '';
+
+        // if (user) {
+        //   $('#myModal').hide();
+        //   document.getElementById('overlay').style.display = 'none';
+        // } else {
+        //   $('#myModal').modal('show');
+        //   $('.grid-container :input').prop('disabled', true);
+        //   document.getElementById('overlay').style.display = 'block';
+        // }
+
+        // $('form input[name=login').click(function() {
+        //   user = $('form input[name=username').val();
+        //   if (user.length > 0) {
+        //     if (user != 'chris' && user != 'brandon') {
+        //       window.location = '/invalid-user';
+        //     } else {
+        //       $('#myModal').hide();
+        //       $('#classForm :input').prop('disabled', false);
+        //     }
+        //   }
+        //   // get image
+        // });
 
         // query the file_ids that the current user has seen and remove them from the array of images
         //  if it persists, could then just remove the next image from the array and keep getting array[0]
+
+        var nextImage =
+          '/media/images/LPD_Sample271_sid133_20151129_091659_018758.mat_bi.png';
+        $('#currImage').attr('src', nextImage);
 
         // Form Validation
         $('form input[type=submit]').click(function() {
@@ -646,7 +717,6 @@
               event.preventDefault();
             }
 
-            //could clean up
             if (validationErrors.length > 0) {
               alert(JSON.stringify(validationErrors));
             }
