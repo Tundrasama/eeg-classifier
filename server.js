@@ -36,7 +36,7 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/eeg-classification', function(req, res) {
-  console.log('pug version');
+  // console.log('pug version');
   res.render('eeg-classification', {
     imgSource: 'media/images/' + process.env.NEXT_IMAGE.replace(/[']/g, ''),
     userImageCount: process.env.USER_CLASSIFICATIONS,
@@ -55,6 +55,9 @@ app.post('/', (req, res) => {
       break;
     case 'Brandon':
       userEmail = 'mwestover@mgh.harvard.edu';
+      break;
+    case 'Guest':
+      userEmail = 'guest@mgh.harvard.edu';
   }
   if (user !== 'Chris' && user !== 'Brandon') {
     res.sendStatus(403);

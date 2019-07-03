@@ -7,8 +7,8 @@ const jwt = require('jsonwebtoken');
 const server = './server.js';
 
 //app.get('/', (req, res) => res.send('API Running'));
-router.get('/', async (req, res) => {
-  // console.log('GET');
+router.get('/API', async (req, res) => {
+  console.log('GET');
   try {
     const Classification = await classifications.find().populate();
 

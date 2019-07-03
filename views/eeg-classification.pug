@@ -27,7 +27,7 @@ html(lang='en')
           p
             u ALL
           // <label class="checkbox-container">
-          input#select_all.selectall(type='checkbox', name='select_all')
+          input#select_all.selectall(type='checkbox', name='select_all' value='select_all')
           //
             <span class="checkmark"></span>
             </label>
@@ -171,7 +171,7 @@ html(lang='en')
               |                 P
             label
               // should probably exclude from POST
-              input#LPD-Predom-Sel-All(type='checkbox', value='All')
+              input#LPD-Predom-Sel-All(type='checkbox', value='A')
               |                 All
           .LPD-Predom-ln2
             label
@@ -237,8 +237,9 @@ html(lang='en')
         .Submit
           input#submit.button(type='submit', name='submit', value='Submit')
           input.button(type='submit', name='not_lpd_gpd', value='Not LPD/GPD')
-          input.button(type='submit', name='pass', value='Pass')
-          p Current User: #{user}
+          input.button(type='submit', name='pass', value='Pass') 
+          p#user Current User: #{user}
+          
     script.
       // JAVASCRIPT
       /// Need a function to return all controls to a default status
@@ -248,12 +249,12 @@ html(lang='en')
       $('#urrImage').attr('src', nextImage);
       // Form Validation
       $('form input[type=submit]').click(function() {
-      $('input[type=submit]', $(this).parents('form')).removeAttr(
-      'clicked'
-      );
-      $(this).attr('clicked', 'true');
+        $('input[type=submit]', $(this).parents('form')).removeAttr(
+        'clicked'
+        );
+        $(this).attr('clicked', 'true');
       });
-      $('#classForm').submit(function(event) {
+      $('#classForm').submit(function(event) {        
       var val = $('input[type=submit][clicked=true]').val();
       if (val == 'Submit') {
       const validationErrors = [];
@@ -371,6 +372,19 @@ html(lang='en')
       }
       }
       });
+      $('#LPD input[name=predom]').click(function() {
+        var LPD_predoms = $('#LPD input[name=predom]:checked')
+        .map(function() {
+        return $(this).val();
+        }).get();
+        
+        if (LPD_predoms.length ==6) {
+          $('#LPD-Predom-Sel-All').prop("checked",true);
+        } else {
+          $('#LPD-Predom-Sel-All').prop("checked",false);
+        }
+
+      });
       // Form Functionality
       $('#select_all').click(function() {
       $('.input-check-channel input').prop('checked', this.checked);
@@ -401,13 +415,13 @@ html(lang='en')
       $(this.form.elements)
       .filter('.LPD-PREDOM')
       .prop('checked', this.checked);
-      $('input[name=select_all]').attr('checked', false);
+      $('#LPD input[name=select_all]').attr('checked', false);
       });
       $('#LPD2-Predom-Sel-All').click(function() {
       $(this.form.elements)
       .filter('.LPD2-PREDOM')
       .prop('checked', this.checked);
-      $('input[name=select_all]').attr('checked', false);
+      $('#LPD2 input[name=select_all]').attr('checked', false);
       });
       disableDiv('#LPD');
       disableDiv('#GPD');
@@ -453,6 +467,7 @@ html(lang='en')
       .find(':input')
       .prop('disabled', false);
       }
+
       document.getElementById('LPD-CHECK').onclick = function() {
       enableDiv('#LPD');
       console.log(this.checked);
@@ -499,19 +514,22 @@ html(lang='en')
       $(document)
       .keydown(function(e) {
       down[e.keyCode] = true;
+      //- alert(e.keyCode);
       })
-      .keyup(function(e) {
-      if (down[76] && down[50]) {
-      //could change to tigger('click')
-      enableDiv('#LPD2');
-      document.getElementById('LPD2-CHECK').checked = true;
-      }
-      down[e.keyCode] = false;
-      });
+      //- .keyup(function(e) {
+      //- if (down[76] && down[50]) {
+      //- //could change to tigger('click')
+      //- enableDiv('#LPD2');
+      //- document.getElementById('LPD2-CHECK').checked = true;
+      //- }
+      //- down[e.keyCode] = false;
+      //- });
+
       var chosenChannel = '';
       document.onkeydown = function(e) {
       // select all?
       if (e.ctrlKey && e.shiftKey && e.which == 65) {
+      alert('select all toggle');
       $('#select_all').trigger('click');
       e.preventDefault();
       }
@@ -527,17 +545,42 @@ html(lang='en')
       }
       // delete channel
       if (e.altKey && e.which >= 49 && e.which <= 53) {
-      if (chosenChannel) {
-      $(chosenChannel + ' input')
-      .eq(e.key - 1)
-      .trigger('click');
-      } else {
-      alert('You must first select a channel with SHIFT + CHAIN #');
-      }
+        if (chosenChannel) {
+          $(chosenChannel + ' input')
+          .eq(e.key - 1)
+          .trigger('click');
+        } else {
+         alert('You must first select a channel with SHIFT + CHAIN #');
+        }
       e.preventDefault();
       }
+      if (e.shiftKey && !e.ctrlKey && [76,70,80,82,84,79,65].includes(e.keyCode)){
+          $(".LPD input[value=" + e.key + "]").trigger('click');
+        }
+        // l = 76
+        // f = 70
+        // p = 80
+        // r = 82
+        // t = 84
+        // o = 79
+        // a = 83
+
       if (!e.ctrlKey && !e.shiftKey && !e.altKey) {
       switch (e.which) {
+      case 85:
+        if (document.getElementById('LPD-CHECK').checked == true) {
+          //- alert('U pressed');
+
+          $('.lpd_type_1').prop('checked',true)
+        }
+        break;
+      case 66:
+        if (document.getElementById('LPD-CHECK').checked == true) {
+          //- alert('B pressed');
+
+          $('.lpd_type_2').prop('checked',true)
+        }
+        break;
       // SELECT/DE-SELECT LPD
       case 76:
       // alert('l');
@@ -585,10 +628,12 @@ html(lang='en')
       // alert('1.5');
       $('input[name=frequency]:eq(3)').prop('checked', true);
       break;
-      case 50 && !down[71]:
+      case 50:
+       if (!down[71]) {
       // alert('2.0');
-      $('input[name=frequency]:eq(4)').prop('checked', true);
-      break;
+        $('input[name=frequency]:eq(4)').prop('checked', true);
+        break;
+      }
       case 87:
       // alert('2.5');
       $('input[name=frequency]:eq(5)').prop('checked', true);

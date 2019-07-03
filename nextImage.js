@@ -26,7 +26,7 @@ module.exports = {
         'picture_path'
       ).exec();
     } catch (err) {
-      console.log('User has views all available images');
+      console.log('User has viewed all available images');
     }
   },
   fetchImages: function() {
