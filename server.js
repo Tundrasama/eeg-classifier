@@ -59,7 +59,7 @@ app.post('/', (req, res) => {
     case 'Guest':
       userEmail = 'guest@mgh.harvard.edu';
   }
-  if (user !== 'Chris' && user !== 'Brandon') {
+  if (user !== 'Chris' && user !== 'Brandon' && user !== 'Guest') {
     res.sendStatus(403);
   } else {
     // jwt.sign({ user: user }, 'secretkey', (err, token) => {
