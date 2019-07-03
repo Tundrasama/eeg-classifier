@@ -222,7 +222,7 @@ html(lang='en')
               input.LPD2-PREDOM(type='checkbox', name='opt_predom', value='P')
               |                 P
             label
-              input#LPD2-Predom-Sel-All(type='checkbox', name='opt_predom', value='All')
+              input#LPD2-Predom-Sel-All(type='checkbox' , value='All')
               |                 All
           .LPD-2-Predom-ln2
             label
@@ -238,6 +238,7 @@ html(lang='en')
           input#submit.button(type='submit', name='submit', value='Submit')
           input.button(type='submit', name='not_lpd_gpd', value='Not LPD/GPD')
           input.button(type='submit', name='pass', value='Pass')
+          p Current User: #{user}
     script.
       // JAVASCRIPT
       /// Need a function to return all controls to a default status
@@ -584,7 +585,7 @@ html(lang='en')
       // alert('1.5');
       $('input[name=frequency]:eq(3)').prop('checked', true);
       break;
-      case 50:
+      case 50 && !down[71]:
       // alert('2.0');
       $('input[name=frequency]:eq(4)').prop('checked', true);
       break;

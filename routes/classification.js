@@ -77,17 +77,26 @@ router.post('/', async (req, res) => {
     } else if (req.body.submit) {
       classification.submitFlag = 1;
 
-      const choiceFields = {};
-      choiceFields.classifier = classificationFields.classChoice;
-      choiceFields.classType = classificationFields.class_type;
-      choiceFields.predominance = classificationFields.predom;
-      classification.classificationChoice = choiceFields;
+      // const choiceFields = {};
+      // choiceFields.classifier = classificationFields.classChoice;
+      // choiceFields.classType = classificationFields.class_type;
+      // choiceFields.predominance = classificationFields.predom;
+      // classification.classificationChoice = choiceFields;
 
-      const optChoiceFields = {};
-      optChoiceFields.classifier = classificationFields.opt_classChoice;
-      optChoiceFields.classType = classificationFields.opt_class_type;
-      optChoiceFields.predominance = classificationFields.opt_predom;
-      classification.opt_classificationChoice = optChoiceFields;
+      classification.classification_choice = classificationFields.classChoice;
+      classification.classification_type = classificationFields.class_type;
+      classification.classification_predom = classificationFields.predom;
+
+      // const optChoiceFields = {};
+      // optChoiceFields.classifier = classificationFields.opt_classChoice;
+      // optChoiceFields.classType = classificationFields.opt_class_type;
+      // optChoiceFields.predominance = classificationFields.opt_predom;
+      // classification.opt_classificationChoice = optChoiceFields;
+
+      classification.optional_classification =
+        classificationFields.opt_classChoice;
+      classification.optional_type = classificationFields.opt_class_type;
+      classification.optional_predom = classificationFields.opt_predom;
 
       classification.montage = classificationFields.montage || 'bipolar';
       classification.frequency = classificationFields.frequency;
@@ -164,31 +173,36 @@ router.post('/', async (req, res) => {
     //find next image to load
     // update process.env.NEXT_IMAGE
 
-    imageList = [];
-    imageItems = images.userImages(userEmail);
-    imageItems.then(function(result) {
-      imageList = result.map(function(image) {
-        return image.picture_path;
+    try {
+      imageList = [];
+      imageItems = images.userImages(userEmail);
+      imageItems.then(function(result) {
+        imageList = result.map(function(image) {
+          return image.picture_path;
+        });
+        process.env.USER_CLASSIFICATIONS = imageList.length;
+        console.log('Image List: ' + imageList);
+        nextIMG = images.nextImage(imageList);
+        nextIMG.then(function(result) {
+          if (result !== null) {
+            nextImage = result.picture_path;
+            console.log('Next image: ' + nextImage);
+            process.env.NEXT_IMAGE = nextImage;
+            process.env.NEXT_IMAGE = process.env.NEXT_IMAGE.replace(/[']/g, '');
+            console.log(
+              userEmail +
+                ' has logged in... First image to serve: /media/images/' +
+                process.env.NEXT_IMAGE.replace(/[']/g, '')
+            );
+            res.redirect('eeg-classification');
+          } else {
+            res.json({ message: 'All available images have been classified.' });
+          }
+        });
       });
-      process.env.USER_CLASSIFICATIONS = imageList.length;
-      console.log('Image List: ' + imageList);
-      nextIMG = images.nextImage(imageList);
-      nextIMG.then(function(result) {
-        if (result.picture_path) {
-          nextImage = result.picture_path;
-          console.log('Next image: ' + nextImage);
-          process.env.NEXT_IMAGE = nextImage;
-          console.log(
-            userEmail +
-              ' has logged in... First image to serve: /media/images/' +
-              process.env.NEXT_IMAGE.replace(/[']/g, '')
-          );
-          res.redirect('eeg-classification');
-        } else {
-          res.json({ message: 'All images available have been classified.' });
-        }
-      });
-    });
+    } catch (err) {
+      console.log(err.message);
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error: ' + err.message);

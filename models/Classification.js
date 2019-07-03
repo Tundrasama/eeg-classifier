@@ -20,6 +20,24 @@ const ClassificationSchema = new db.Schema({
   channel_test: {
     type: Boolean
   },
+  classification_choice: {
+    type: String
+  },
+  classification_type: {
+    type: String
+  },
+  classification_predom: {
+    type: [String]
+  },
+  optional_classification: {
+    type: String
+  },
+  optional_type: {
+    type: String
+  },
+  optional_predom: {
+    type: [String]
+  },
   // channel_1: [
   //   {
   //     name: {
@@ -260,20 +278,20 @@ const ClassificationSchema = new db.Schema({
   //     }
   //   }
   // ],
-  classificationChoice: [
-    {
-      classifier: String,
-      classType: String,
-      predominance: [String]
-    }
-  ],
-  opt_classificationChoice: [
-    {
-      classifier: String,
-      classType: String,
-      predominance: [String]
-    }
-  ],
+  // classificationChoice: [
+  //   {
+  //     classifier: String,
+  //     classType: String,
+  //     predominance: [String]
+  //   }
+  // ],
+  // opt_classificationChoice: [
+  //   {
+  //     classifier: String,
+  //     classType: String,
+  //     predominance: [String]
+  //   }
+  // ],
   montage: {
     type: String
   },

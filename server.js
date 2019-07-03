@@ -40,7 +40,8 @@ app.get('/eeg-classification', function(req, res) {
   res.render('eeg-classification', {
     imgSource: 'media/images/' + process.env.NEXT_IMAGE.replace(/[']/g, ''),
     userImageCount: process.env.USER_CLASSIFICATIONS,
-    totalImageCount: imageList_push.length
+    totalImageCount: imageList_push.length,
+    user: process.env.USER
   });
 });
 
