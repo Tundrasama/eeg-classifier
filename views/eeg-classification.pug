@@ -249,10 +249,13 @@ html(lang='en')
       $('#urrImage').attr('src', nextImage);
       // Form Validation
       $('form input[type=submit]').click(function() {
+        // this overrides the normal submission functionality in order to
+        // check that submission is VALID
         $('input[type=submit]', $(this).parents('form')).removeAttr(
         'clicked'
         );
         $(this).attr('clicked', 'true');
+        //alert('Submit');
       });
       $('#classForm').submit(function(event) {        
       var val = $('input[type=submit][clicked=true]').val();
@@ -367,17 +370,24 @@ html(lang='en')
       });
       event.preventDefault();
       }
+      //alert('Validation Errors: ' + validationErrors.length);
       if (validationErrors.length > 0) {
-      alert(JSON.stringify(validationErrors));
+        //- alert('Validation Errors');
+        alert(JSON.stringify(validationErrors));
+      } else {
+        //alert('submit the form');
+        $('#classForm').submit();
+         $('form input[type=submit]').attr('clicked','true');
       }
       }
       });
+      /// end Form Submit
       $('#LPD input[name=predom]').click(function() {
         var LPD_predoms = $('#LPD input[name=predom]:checked')
         .map(function() {
         return $(this).val();
         }).get();
-        
+
         if (LPD_predoms.length ==6) {
           $('#LPD-Predom-Sel-All').prop("checked",true);
         } else {
@@ -519,6 +529,7 @@ html(lang='en')
       //- .keyup(function(e) {
       //- if (down[76] && down[50]) {
       //- //could change to tigger('click')
+      //// /// Disabled LPD2 functionality
       //- enableDiv('#LPD2');
       //- document.getElementById('LPD2-CHECK').checked = true;
       //- }
@@ -529,7 +540,6 @@ html(lang='en')
       document.onkeydown = function(e) {
       // select all?
       if (e.ctrlKey && e.shiftKey && e.which == 65) {
-      alert('select all toggle');
       $('#select_all').trigger('click');
       e.preventDefault();
       }
@@ -556,7 +566,6 @@ html(lang='en')
       }
       if (e.shiftKey && !e.ctrlKey && [76,70,80,82,84,79,65].includes(e.keyCode)){
           $(".LPD input[value=" + e.key + "]").trigger('click');
-        }
         // l = 76
         // f = 70
         // p = 80
@@ -564,13 +573,48 @@ html(lang='en')
         // t = 84
         // o = 79
         // a = 83
-
+        }
+      if (e.shiftKey && [70,79,77,71].includes(e.keyCode)) {
+        if (document.getElementById('GPD-CHECK').checked == true) {
+        //- alert(e.key)
+        var val;
+        var ending;
+        switch ( e.key ) {
+          case 'F':
+            val = 'Frontal';
+            break;
+          case 'O':
+            val = 'Occipital';
+            break;
+          case 'M': 
+            val = 'Midline';
+            break;
+          case 'G':
+            val = 'Generalized';
+        }
+        //- alert(val);
+        $(".GPD input[value=" + val + "]").trigger('click');
+        }
+      //f = 70
+      //o = 79
+      //m = 77
+      //g = 71
+      }
+      if (e.altKey && e.keyCode==80) {
+        //- alert('(P)ass');
+        e.preventDefault();
+        $('input[value=Pass').trigger('click');
+      }
+      if (e.altKey && e.keyCode == 78) {
+        //- alert('(N)ot LPD/GPD')
+        e.preventDefault();
+        $('input[name=not_lpd_gpd').trigger('click');
+      }
       if (!e.ctrlKey && !e.shiftKey && !e.altKey) {
       switch (e.which) {
       case 85:
         if (document.getElementById('LPD-CHECK').checked == true) {
           //- alert('U pressed');
-
           $('.lpd_type_1').prop('checked',true)
         }
         break;

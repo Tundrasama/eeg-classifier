@@ -48,6 +48,10 @@ router.post('/', async (req, res) => {
       case 'Brandon':
         classification.user = 'mwestover@mgh.harvard.edu';
         userEmail = classification.user;
+        break;
+      case 'Guest':
+        classification.user = 'guest@mgh.harvard.edu';
+        userEmail = classification.user;
     }
 
     // const randNum = Math.floor(Math.random() * 5);
