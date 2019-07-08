@@ -49,6 +49,9 @@ router.post('/', async (req, res) => {
         classification.user = 'mwestover@mgh.harvard.edu';
         userEmail = classification.user;
         break;
+      case 'Illya':
+        classification.user = 'itolokh@partners.org';
+        userEmail = classification.user;
       case 'Guest':
         classification.user = 'guest@mgh.harvard.edu';
         userEmail = classification.user;

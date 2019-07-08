@@ -56,10 +56,18 @@ app.post('/', (req, res) => {
     case 'Brandon':
       userEmail = 'mwestover@mgh.harvard.edu';
       break;
+    case 'Illya':
+      userEmail = 'itolokh@partners.org';
+      break;
     case 'Guest':
       userEmail = 'guest@mgh.harvard.edu';
   }
-  if (user !== 'Chris' && user !== 'Brandon' && user !== 'Guest') {
+  if (
+    user !== 'Chris' &&
+    user !== 'Brandon' &&
+    user !== 'Illya' &&
+    user !== 'Guest'
+  ) {
     res.sendStatus(403);
   } else {
     // jwt.sign({ user: user }, 'secretkey', (err, token) => {
